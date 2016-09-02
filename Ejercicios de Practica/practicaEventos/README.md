@@ -1,0 +1,2 @@
+#Login y Recuperacion de Datos mediante WebServices (Android)
+Aplicacion de prueba para realizar un login a traves de un webservices y recuperar los datos usando otro webservices para mostrarlos al usuario
