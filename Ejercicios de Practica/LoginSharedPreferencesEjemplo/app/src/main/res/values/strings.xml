@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">practicaEventos</string>
+    <string name="login_usu_text">USUARIO</string>
+    <string name="login_pass_text">CONTRASEÑA</string>
+    <string name="tuser">USUARIO:</string>
+    <string name="tpass">CONTRASEÑA:</string>
+    <string name="temail">EMAIL:</string>
+</resources>
