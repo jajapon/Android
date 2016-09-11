@@ -20,10 +20,9 @@
    }
    $jsonArray = array();
 
-   $query = 'SELECT * FROM anime';
+   $query = 'SELECT * FROM anime ORDER BY titulo';
    if($result = $connection->query($query)){
      if ($result->num_rows==0) {
-         echo "lkfjalsf";
      }else{
          while($obj=$result->fetch_object()){
             array_push($jsonArray,$obj);
