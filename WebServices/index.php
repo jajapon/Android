@@ -70,6 +70,7 @@
           </form>
         </div>
         <div style="float:right">
+          <a style="margin-right:10px;margin-top:10px;height:30px" href="index.php?descarga=ok" class="btn btn-info">Descarga APK Android</a>
           <a style="margin-right:10px;margin-top:10px;height:30px" href="alta_anime.php" class="btn btn-success">Añadir</a>
         </div>
       </div>
@@ -127,6 +128,21 @@
             }
           }
        ?>
+
+       <?php
+          $fichero = 'animejapan.apk';
+              if (file_exists($fichero)) {
+              header('Content-Description: File Transfer');
+              header('Content-Type: application/octet-stream');
+              header('Content-Disposition: attachment; filename="'.basename($fichero).'"');
+              header('Expires: 0');
+              header('Cache-Control: must-revalidate');
+              header('Pragma: public');
+              header('Content-Length: ' . filesize($fichero));
+              readfile($fichero);
+              exit;
+          }
+        ?>
     </table>
   </div>
 </div>
