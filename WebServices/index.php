@@ -85,9 +85,9 @@
       <?php
           include 'conexion.php';
           if(isset($_GET["anime"])){
-            $consulta = "SELECT * FROM anime WHERE titulo LIKE '%".$_GET["anime"]."%' AND animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999)";
+            $consulta = "SELECT * FROM anime WHERE titulo LIKE '%".$_GET["anime"]."%' AND animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999) ORDER BY titulo";
           }else{
-            $consulta = "SELECT * FROM anime WHERE animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999)";
+            $consulta = "SELECT * FROM anime WHERE animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999) ORDER BY titulo";
           }
           if ($result = $connection->query($consulta)){
             if($result->num_rows==0){

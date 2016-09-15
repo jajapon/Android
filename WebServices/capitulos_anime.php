@@ -73,9 +73,14 @@
               while($fila = $result->fetch_object()){
                 echo '<tr>
                  <td style="text-align:center">'.$fila->ncapitulo.'</td>
-                 <td style="text-align:center">'.$fila->parte.'</td>
-                 <td style="text-align:center;">'.$fila->url.'</td>
-                 <td style="text-align:center;">
+                 <td style="text-align:center">'.$fila->parte.'</td>';
+
+                 if(strlen($fila->url) > 14){
+                   echo '<td style="text-align:center;"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                 }else{
+                   echo '<td style="text-align:center;"><a href="https://www.youtube.com/watch?v='.$fila->url.'">'.$fila->url.'</a></td>';
+                 }
+                 echo '<td style="text-align:center;">
                     <a style="margin-left:5px;" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
                     <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-danger">Borrar</a>
                 </td>
