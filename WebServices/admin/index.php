@@ -2,15 +2,13 @@
 <?php
     ob_start();
 ?>
-
 <?php
     session_start();
     if(!empty($_SESSION["usuario"])){
-      header('location: admin/index.php');
     }else{
+      header('location: ../index.php');
     }
 ?>
-
 <html>
   <head>
     <meta charset="utf-8">
@@ -51,44 +49,16 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="index.php">Animes</a></li>
           </ul>
-          <form id="signin" class="navbar-form navbar-right" role="form" method="post" >
-                 <div class="input-group">
-                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                     <input id="username" type="text" class="form-control" name="username" value="" placeholder="Email Address">
-                 </div>
-
-                 <div class="input-group">
-                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                     <input id="userpass" type="password" class="form-control" name="userpass" value="" placeholder="Password">
-                 </div>
-
-                 <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+          <ul class="nav navbar-right" id="bs-example-navbar-collapse-1" style="margin-top:3px">
+            <li><a href="index.php?logout=yes" id="logout" name="logout"> <span class="glyphicon glyphicon-off"></span>  Cerrar sesion</a></li>
+          </ul>
             <?php
-                  if (isset($_POST["username"])) {
-                     $rol ="";
-                     include 'conexion.php';
-                     $user = $_POST["username"];
-                     $pass = $_POST["userpass"];
-
-                     $consulta = "SELECT * FROM usuario WHERE username = '$user' AND userpass ='$pass'";
-                     if ($result = $connection->query($consulta)) {
-                        if ($result->num_rows==0) {
-                          header("Location: index.php");
-                        } else {
-                          $nombre = "";
-                          while($obj=$result->fetch_object()){
-                              $nombre=$obj->nombre;
-                          }
-                          $_SESSION["usuario"]=$user;
-                          header("Location: admin/index.php");
-                        }
-                     } else {
-                       var_dump( $connection->error());
+                     if (isset($_GET["logout"])) {
+                          session_destroy();
+                          header("Location: ../index.php");
+                     }else{
                      }
-                  }else{
-                  }
-             ?>
+            ?>
          </div><!-- /.navbar-collapse -->
 
       </div><!-- /.container-fluid -->
@@ -118,6 +88,7 @@
         </div>
         <div style="float:right">
           <a style="margin-right:10px;margin-top:10px;height:30px" href="index.php?descarga=ok" class="btn btn-info">Descarga APK Android</a>
+          <a style="margin-right:10px;margin-top:10px;height:30px" href="alta_anime.php" class="btn btn-success">Añadir</a>
         </div>
       </div>
     <table class="table .table-bordered" style="margin-top:20px;" >
@@ -146,13 +117,32 @@
                  <th style="text-align:center;width:15%">'.$fila->temporada.'</th>
                  <th style="text-align:center;width:15%">'.$fila->numcapitulos.'</th>
                  <th style="text-align:center;">
-                    <a style="margin-left:5px;" href="capitulos_anime_user.php?animeid='.$fila->animeid.'&tit='.$fila->titulo.'&ncaps='.$fila->numcapitulos.'" class="btn btn-info">Ver lista capitulos</a>
+                    <a style="margin-left:5px;" href="modificar_anime.php?animeid='.$fila->animeid.'&tit='.$fila->titulo.'&tem='.$fila->temporada.'&ncap='.$fila->numcapitulos.'&des='.$fila->descripcion.'" class="btn btn-warning">Modificar</a>
+                    <a style="margin-left:5px;" href="index.php?animeBorrar='.$fila->animeid.'" class="btn btn-danger">Borrar</a>
+                    <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$fila->animeid.'&tit='.$fila->titulo.'&ncaps='.$fila->numcapitulos.'" class="btn btn-info">Ver lista capitulos</a>
                 </th>
                </tr>';
               }
             }
           }else{
             echo $connection->error();
+          }
+       ?>
+
+      <?php
+          if(isset($_GET["animeBorrar"])){
+            include 'conexion.php';
+            $consultaCaps = 'DELETE FROM capitulo WHERE animeid = '.$_GET["animeBorrar"].'';
+            $consultaAnime = 'DELETE FROM anime WHERE animeid = '.$_GET["animeBorrar"].'';
+            if($connection->query($consultaCaps)){
+              if($connection->query($consultaAnime)){
+                header('Location: index.php');
+              }else{
+                echo $connection->error();
+              }
+            }else{
+              echo $connection->error();
+            }
           }
        ?>
 

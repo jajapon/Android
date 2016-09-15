@@ -2,6 +2,13 @@
 <?php
     ob_start();
 ?>
+<?php
+    session_start();
+    if(!empty($_SESSION["usuario"])){
+      header('location: admin/index.php');
+    }else{
+    }
+?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -42,8 +49,47 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="index.php">Animes</a></li>
           </ul>
+          <form id="signin" class="navbar-form navbar-right" role="form" method="post" >
+                 <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                     <input id="username" type="text" class="form-control" name="username" value="" placeholder="Email Address">
+                 </div>
 
+                 <div class="input-group">
+                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                     <input id="userpass" type="password" class="form-control" name="userpass" value="" placeholder="Password">
+                 </div>
+
+                 <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <?php
+                  if (isset($_POST["username"])) {
+                     $rol ="";
+                     include 'conexion.php';
+                     $user = $_POST["username"];
+                     $pass = $_POST["userpass"];
+
+                     $consulta = "SELECT * FROM usuario WHERE username = '$user' AND userpass ='$pass'";
+                     if ($result = $connection->query($consulta)) {
+                        if ($result->num_rows==0) {
+                          header("Location: index.php");
+                          var_dump($result->num_rows);
+                        } else {
+                          $nombre = "";
+                          while($obj=$result->fetch_object()){
+                              $nombre=$obj->nombre;
+                          }
+                          $_SESSION["usuario"]=$user;
+                          header("Location: admin/index.php");
+                        }
+                     } else {
+                       var_dump( $connection->error());
+                     }
+                  }else{
+                  }
+             ?>
          </div><!-- /.navbar-collapse -->
+
       </div><!-- /.container-fluid -->
 
 
@@ -51,17 +97,11 @@
     <div class="container fondo" >
     <div class="table-responsive" style="margin-top:80px;background-color:white;opacity:0.9;">
       <div style="background-color:#143393;font-size:18px;width:100%;height:40px;text-align:center;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold"><?php echo $_GET["tit"]; ?></div>
-      <?php
-      echo '<center>
-        <a style="margin-top:20px" href="alta_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'" class="btn btn-success">Añadir capitulo</a>
-      </center>';
-       ?>
     <table class="table .table-bordered" style="margin-top:20px;" >
        <tr>
         <th style="text-align:center;">Número de capitulo</th>
         <th style="text-align:center;">Parte</th>
         <th style="text-align:center;">Enlace</th>
-        <th style="text-align:center;">Operaciones</th>
       </tr>
       <?php
           include 'conexion.php';
@@ -78,13 +118,9 @@
                  if(strlen($fila->url) > 14){
                    echo '<td style="text-align:center;"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
                  }else{
-                   echo '<td style="text-align:center;"><a href="https://www.youtube.com/watch?v='.$fila->url.'">'.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
-                 echo '<td style="text-align:center;">
-                    <a style="margin-left:5px;" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
-                    <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-danger">Borrar</a>
-                </td>
-               </tr>';
+               echo '</tr>';
               }
             }
           }else{

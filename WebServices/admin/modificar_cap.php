@@ -2,6 +2,13 @@
 <?php
     ob_start();
 ?>
+<?php
+    session_start();
+    if(!empty($_SESSION["usuario"])){
+    }else{
+      header('location: ../index.php');
+    }
+?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -46,7 +53,16 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="index.php">Animes</a></li>
           </ul>
-
+          <ul class="nav navbar-right" id="bs-example-navbar-collapse-1" style="margin-top:3px">
+            <li><a href="modificar_cap.php?logout=yes" id="logout" name="logout"> <span class="glyphicon glyphicon-off"></span>  Cerrar sesion</a></li>
+          </ul>
+            <?php
+                     if (isset($_GET["logout"])) {
+                          session_destroy();
+                          header("Location: ../index.php");
+                     }else{
+                     }
+            ?>
          </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
 
