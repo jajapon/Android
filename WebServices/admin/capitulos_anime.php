@@ -74,7 +74,7 @@
        ?>
     <table class="table .table-bordered" style="margin-top:20px;" >
        <tr>
-        <th style="text-align:center;">Número de capitulo</th>
+        <th style="text-align:center;">Capitulo</th>
         <th style="text-align:center;">Parte</th>
         <th style="text-align:center;">Enlace</th>
         <th style="text-align:center;">Operaciones</th>
@@ -92,11 +92,11 @@
                  <td style="text-align:center">'.$fila->parte.'</td>';
 
                  if(strlen($fila->url) > 14){
-                   echo '<td style="text-align:center;"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;width:70%"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
                  }else{
-                   echo '<td style="text-align:center;"><a href="https://www.youtube.com/watch?v='.$fila->url.'">'.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;width:70%"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
-                 echo '<td style="text-align:center;">
+                 echo '<td style="text-align:center;width:20%">
                     <a style="margin-left:5px;" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
                     <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-danger">Borrar</a>
                 </td>
