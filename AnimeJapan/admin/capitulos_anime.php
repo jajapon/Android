@@ -72,12 +72,12 @@
         <a style="margin-top:20px" href="alta_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'" class="btn btn-success">Añadir capitulo</a>
       </center>';
        ?>
-    <table class="table .table-bordered" style="margin-top:20px;" >
+    <table class="table-bordered" style="margin-top:20px;width:100%" >
        <tr>
         <th style="text-align:center;">Capitulo</th>
         <th style="text-align:center;">Parte</th>
         <th style="text-align:center;">Enlace</th>
-        <th style="text-align:center;">Operaciones</th>
+        <th style="text-align:center;width:400px">Operaciones</th>
       </tr>
       <?php
           include 'conexion.php';
@@ -87,16 +87,20 @@
 
             }else{
               while($fila = $result->fetch_object()){
-                echo '<tr>
-                 <td style="width:5%;text-align:center">'.$fila->ncapitulo.'</td>
-                 <td style="width:5%;text-align:center">'.$fila->parte.'</td>';
+                echo '<tr style="height:50px">
+                 <td style="width:50px;text-align:center">'.$fila->ncapitulo.'</td>
+                 <td style="width:50px;text-align:center">'.$fila->parte.'</td>';
 
                  if(strlen($fila->url) > 14){
-                   echo '<td style="text-align:center;width:70%"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   if(strlen($fila->url) > 160){
+                     echo '<td style="text-align:center;font-size:10px"><a style="width:400px" href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   }else{
+                     echo '<td style="text-align:center;"><a style="width:400px" href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   }
                  }else{
-                   echo '<td style="text-align:center;width:70%"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
-                 echo '<td style="text-align:center;width:20%">
+                 echo '<td style="text-align:center;width:200px">
                     <a style="margin-left:5px;" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
                     <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-danger">Borrar</a>
                 </td>

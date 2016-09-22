@@ -97,9 +97,9 @@
     <div class="container fondo" >
     <div class="table-responsive" style="margin-top:80px;background-color:white;opacity:0.9;">
       <div style="background-color:#143393;font-size:18px;width:100%;height:40px;text-align:center;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold"><?php echo $_GET["tit"]; ?></div>
-    <table class="table .table-bordered" style="margin-top:20px;" >
+    <table class="table table-bordered" style="margin-top:20px;" >
        <tr>
-        <th style="text-align:center;">Número de capitulo</th>
+        <th style="text-align:center;">Capitulo</th>
         <th style="text-align:center;">Parte</th>
         <th style="text-align:center;">Enlace</th>
       </tr>
@@ -111,14 +111,18 @@
 
             }else{
               while($fila = $result->fetch_object()){
-                echo '<tr>
-                 <td style="text-align:center">'.$fila->ncapitulo.'</td>
-                 <td style="text-align:center">'.$fila->parte.'</td>';
+                echo '<tr style="height:50px">
+                 <td style="width:50px;text-align:center">'.$fila->ncapitulo.'</td>
+                 <td style="width:50px;text-align:center">'.$fila->parte.'</td>';
 
                  if(strlen($fila->url) > 14){
-                   echo '<td style="text-align:center;width:80%"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   if(strlen($fila->url) > 160){
+                     echo '<td style="text-align:center;font-size:10px"><a style="width:400px" href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   }else{
+                     echo '<td style="text-align:center;"><a style="width:400px" href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   }
                  }else{
-                   echo '<td style="text-align:center;width:80%"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
                echo '</tr>';
               }
