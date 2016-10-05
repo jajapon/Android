@@ -74,7 +74,7 @@
         	<div class="panel panel-default">
         		<div class="panel-heading">
               <img src="https://lh3.googleusercontent.com/-3K9g7x_fzu8/AAAAAAAAAAI/AAAAAAAAAAo/dZHUQLK_YeM/s36-p-k-rw-no/photo.jpg" style="display:inline"/>
-			    		<h3 class="panel-title" style="display:inline;margin-left:20px;font-weight:bold;font-size:13px">ALTA DE ANIME<small></h3>
+			    		<h3 class="panel-title" style="display:inline;margin-left:20px;font-weight:bold;font-size:13px">MODIFICACIÓN DE ANIME<small></h3>
 			 			</div>
 			 			<div class="panel-body">
 			    		<form role="form" action="modificar_anime.php" method="POST">
@@ -86,6 +86,7 @@
                         $tem = $_GET["tem"];
                         $ncap = $_GET["ncap"];
                         $des = $_GET["des"];
+                        $idi = $_GET["idioma"];
 
                         echo '
                         <div class="row">
@@ -105,6 +106,24 @@
                         <div class="form-group">
         			    				<input type="number" start="0" name="ncaps" id="ncaps" min="0" value="'.$ncap.'"  max="9999" class="form-control input-sm" placeholder="Número de capitulos" required>
         			    			</div>
+
+                        <div class="form-group">
+                        <select class="form-control" id="idioma" name="idioma">';
+                            if($idi == "ESP"){
+                                echo '<option value="ESP" selected>Español</option>
+                                <option value="LAT">Latino</option>
+                                <option value="SUB">Sub Español</option>';
+                            }elseif($idi == "LAT"){
+                                echo '<option value="ESP">Español</option>
+                                <option value="LAT" selected>Latino</option>
+                                <option value="SUB">Sub Español</option>';
+                            }elseif($idi == "SUB"){
+                                echo '<option value="ESP">Español</option>
+                                <option value="LAT">Latino</option>
+                                <option value="SUB" selected>Sub Español</option>';
+                            }
+                          echo '</select>
+                        </div>
 
         			    			<div class="form-group">
                           <textarea class="form-control" rows="5" name="descripcion" id="descripcion"  placeholder="Descripción" required>'.$des.'</textarea>
@@ -127,9 +146,10 @@
                    $ncaps = $_POST["ncaps"];
                    $descripcion = $_POST["descripcion"];
                    $animeid = $_POST["animeid"];
+                   $idioma = $_POST["idioma"];
 
 
-                            $consulta = "UPDATE anime SET titulo = '$anime', temporada =  $temporada, numcapitulos = $ncaps, descripcion = '$descripcion' WHERE animeid = $animeid;";
+                            $consulta = "UPDATE anime SET titulo = '$anime', idioma = '$idioma', temporada =  $temporada, numcapitulos = $ncaps, descripcion = '$descripcion' WHERE animeid = $animeid;";
                             if($connection->query($consulta)){
                               echo "<div style='width:92%;margin:0 auto;color:white;background-color:#04B45F;margin-bottom:10px;border-radius:2px;padding:10px'>El anime fue modificado</div>";
                               header('Location: index.php');
@@ -137,9 +157,6 @@
                             }else{
                               echo $connection->error;
                             }
-
-
-
 
                 }
              ?>

@@ -126,6 +126,7 @@
         <th style="text-align:center;">Título</th>
         <th style="text-align:center;">Temporada</th>
         <th style="text-align:center;">Capitulos</th>
+        <th style="text-align:center;">Idioma</th>
         <th style="text-align:center;">Operaciones</th>
       </tr>
       <?php
@@ -144,8 +145,15 @@
                  <th style="text-align:center;width:15%"><center><img src="'.$fila->imagen.'" style="width:35%"/></center></th>
                  <th style="text-align:center;width:15%">'.$fila->titulo.'</th>
                  <th style="text-align:center;width:15%">'.$fila->temporada.'</th>
-                 <th style="text-align:center;width:15%">'.$fila->numcapitulos.'</th>
-                 <th style="text-align:center;">
+                 <th style="text-align:center;width:15%">'.$fila->numcapitulos.'</th>';
+                 if($fila->idioma=="ESP"){
+                   echo '<th style="text-align:center;width:15%"><img src="./imagenes/es.jpg" alt="" /></th>';
+                 }elseif($fila->idioma=="LAT"){
+                   echo '<th style="text-align:center;width:15%"><img src="./imagenes/lat.png" alt="" /></th>';
+                 }elseif($fila->idioma=="SUB"){
+                   echo '<th style="text-align:center;width:15%"><img src="./imagenes/sub.png" alt="" /></th>';
+                 }
+                 echo '<th style="text-align:center;">
                     <a style="margin-left:5px;" href="capitulos_anime_user.php?animeid='.$fila->animeid.'&tit='.$fila->titulo.'&ncaps='.$fila->numcapitulos.'" class="btn btn-info">Ver lista capitulos</a>
                 </th>
                </tr>';

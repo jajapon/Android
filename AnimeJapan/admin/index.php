@@ -97,6 +97,7 @@
         <th style="text-align:center;">Título</th>
         <th style="text-align:center;">Temporada</th>
         <th style="text-align:center;">Capitulos</th>
+        <th style="text-align:center;">Idioma</th>
         <th style="text-align:center;">Operaciones</th>
       </tr>
       <?php
@@ -114,10 +115,17 @@
                 echo '<tr>
                  <th style="text-align:center;width:15%"><center><img src="'.$fila->imagen.'" style="width:35%"/></center></th>
                  <th style="text-align:center;width:15%">'.$fila->titulo.'</th>
-                 <th style="text-align:center;width:15%">'.$fila->temporada.'</th>
-                 <th style="text-align:center;width:15%">'.$fila->numcapitulos.'</th>
-                 <th style="text-align:center;">
-                    <a style="margin-left:5px;" href="modificar_anime.php?animeid='.$fila->animeid.'&tit='.$fila->titulo.'&tem='.$fila->temporada.'&ncap='.$fila->numcapitulos.'&des='.$fila->descripcion.'" class="btn btn-warning">Modificar</a>
+                 <th style="text-align:center;width:10%">'.$fila->temporada.'</th>
+                 <th style="text-align:center;width:10%">'.($fila->numcapitulos).'</th>';
+                 if($fila->idioma=="ESP"){
+                   echo '<th style="text-align:center;width:10%"><img src="../imagenes/es.jpg" alt="" /></th>';
+                 }elseif($fila->idioma=="LAT"){
+                   echo '<th style="text-align:center;width:10%"><img src="../imagenes/lat.png" alt="" /></th>';
+                 }elseif($fila->idioma=="SUB"){
+                   echo '<th style="text-align:center;width:10%"><img src="../imagenes/sub.png" alt="" /></th>';
+                 }
+                 echo '<th style="text-align:center;">
+                    <a style="margin-left:5px;" href="modificar_anime.php?animeid='.$fila->animeid.'&tit='.$fila->titulo.'&tem='.$fila->temporada.'&ncap='.$fila->numcapitulos.'&idioma='.$fila->idioma.'&des='.$fila->descripcion.'" class="btn btn-warning">Modificar</a>
                     <a style="margin-left:5px;" href="index.php?animeBorrar='.$fila->animeid.'" class="btn btn-danger">Borrar</a>
                     <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$fila->animeid.'&tit='.$fila->titulo.'&ncaps='.$fila->numcapitulos.'" class="btn btn-info">Ver lista capitulos</a>
                 </th>

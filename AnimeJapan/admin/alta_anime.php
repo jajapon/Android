@@ -98,7 +98,13 @@
                 <div class="form-group">
 			    				<input type="text" name="imagen" id="imagen" class="form-control input-sm" placeholder="Url imagen" required>
 			    			</div>
-
+                <div class="form-group">
+                  <select class="form-control" name ="idioma" id="idioma">';
+                      <option value="ESP">Español</option>
+                      <option value="LAT">Latino</option>
+                      <option value="SUB">Sub Español</option>
+                  </select>
+                </div>
 			    			<div class="form-group">
                   <textarea class="form-control" rows="5" name="descripcion" id="descripcion" placeholder="Descripción" required></textarea>
 			    			</div>
@@ -117,6 +123,7 @@
                    $ncaps = $_POST["ncaps"];
                    $imagen = $_POST["imagen"];
                    $descripcion = $_POST["descripcion"];
+                   $idioma = $_POST["idioma"];
 
                    $consulta = "SELECT * FROM anime WHERE titulo = '$anime' AND temporada=$temporada";
                    if($result = $connection->query($consulta)){
@@ -128,7 +135,7 @@
                             $fila = $result->fetch_object();
                             $animeid = $fila->ida + 1;
 
-                            $consulta = "INSERT INTO anime VALUES($animeid, '$anime', $temporada, $ncaps, '$imagen', '$descripcion');";
+                            $consulta = "INSERT INTO anime VALUES($animeid, '$anime', $temporada, $ncaps, '$imagen', '$descripcion','$idioma');";
                             if($connection->query($consulta)){
                               echo "<div style='width:92%;margin:0 auto;color:white;background-color:#04B45F;margin-bottom:10px;border-radius:2px;padding:10px'>El anime fue creado</div>";
                             }else{

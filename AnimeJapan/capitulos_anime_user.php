@@ -138,11 +138,24 @@
                   <td><?php  echo "   ".$fila->temporada ?> </td>
                 </tr>
                 <tr>
+                  <th style="height:30px">Idioma: </th>
+                  <td><?php
+                      if($fila->idioma == "ESP"){
+                        echo "Castellano";
+                      }elseif($fila->idioma == "LAT"){
+                        echo "Latino";
+                      }elseif($fila->idioma == "SUB"){
+                        echo "Sub Español";
+                      }
+                    ?>
+                  </td>
+                </tr>
+                <tr>
                   <th style="height:30px">Capítulos: </th>
                   <td><?php  echo "   ".$fila->numcapitulos ?> </td>
                 </tr>
                 <tr>
-                  <th style="vertical-align:top;text-align: left">Descripción: </th>
+                  <th style="vertical-align:top;text-align:left;height:100px">Descripción: </th>
                   <td><?php  echo $fila->descripcion ?> </td>
                 </tr>
               </table>
