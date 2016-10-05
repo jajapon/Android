@@ -28,6 +28,31 @@
 
         }
 
+        @font-face {
+        	  font-family: 'c'; /*a name to be used later*/
+            src: url('../fonts/4.ttf'); /*URL to font*/
+        }
+        @font-face {
+        	  font-family: 'd'; /*a name to be used later*/
+            src: url('../fonts/5.ttf'); /*URL to font*/
+        }
+
+        @font-face {
+        	  font-family: 'e'; /*a name to be used later*/
+            src: url('../fonts/7.otf'); /*URL to font*/
+        }
+
+        .formato1{
+          font-family: 'c';
+        }
+        .formato2{
+          font-family: 'd';
+        }
+        .formato3{
+          font-family: 'e';
+          color: #FF8000;
+          text-shadow: 2px 2px black;
+        }
     </style>
   </head>
   <body>
@@ -62,22 +87,52 @@
          </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
 
+      <?php
+          include 'conexion.php';
+          $consulta = "SELECT * FROM anime where animeid = ".$_GET['animeid'].";";
+          $result = $connection->query($consulta);
+          $fila = $result->fetch_object();
+
+       ?>
 
     </nav>
     <div class="container fondo" >
     <div class="table-responsive" style="margin-top:80px;background-color:white;opacity:0.9;">
-      <div style="background-color:#143393;font-size:18px;width:100%;height:40px;text-align:center;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold"><?php echo $_GET["tit"]; ?></div>
-      <?php
+      <div style="font-size:18px;width:100%;height:80px;margin-left:7%;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold"> <h2 class="formato3"><?php echo $_GET["tit"]; ?></h2> </div>
+      <div style="width:100%;height:300px;">
+          <div style="float:left;height:100%;width:30%;margin-left:5%">
+             <img src="<?php echo $fila->imagen?>" alt="" style="width:85%;height:85%;margin-left:7.5%;margin-top:5%" />
+          </div>
+          <div style="float:left;height:100%;width:55%;margin-left:2%;padding-left:10px;">
+              <table style="margin-top:20px">
+                <tr style="height:30px">
+                  <th style="width:100px">Temporada: </th>
+                  <td><?php  echo "   ".$fila->temporada ?> </td>
+                </tr>
+                <tr>
+                  <th style="height:30px">Capítulos: </th>
+                  <td><?php  echo "   ".$fila->numcapitulos ?> </td>
+                </tr>
+                <tr>
+                  <th style="vertical-align:top;text-align: left">Descripción: </th>
+                  <td><?php  echo $fila->descripcion ?> </td>
+                </tr>
+              </table>
+          </div>
+      </div>
+          <?php
       echo '<center>
-        <a style="margin-top:20px" href="alta_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'" class="btn btn-success">Añadir capitulo</a>
+        <a style="margin-top:10px;margin-bottom:20px;" href="alta_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'" class="btn btn-success">Añadir capitulo</a>
       </center>';
        ?>
-    <table class="table-bordered" style="margin-top:20px;width:100%" >
+       <div style="background-color:#143393;font-size:18px;width:100%;height:40px;text-align:center;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold">Capítulo</div>
+
+    <table class="table .table-bordered" style="margin-top:20px;" >
        <tr>
         <th style="text-align:center;">Capitulo</th>
         <th style="text-align:center;">Parte</th>
         <th style="text-align:center;">Enlace</th>
-        <th style="text-align:center;width:400px">Operaciones</th>
+        <th style="text-align:center;">Operaciones</th>
       </tr>
       <?php
           include 'conexion.php';
@@ -87,20 +142,16 @@
 
             }else{
               while($fila = $result->fetch_object()){
-                echo '<tr style="height:50px">
-                 <td style="width:50px;text-align:center">'.$fila->ncapitulo.'</td>
-                 <td style="width:50px;text-align:center">'.$fila->parte.'</td>';
+                echo '<tr>
+                 <td style="width:5%;text-align:center">'.$fila->ncapitulo.'</td>
+                 <td style="width:5%;text-align:center">'.$fila->parte.'</td>';
 
                  if(strlen($fila->url) > 14){
-                   if(strlen($fila->url) > 160){
-                     echo '<td style="text-align:center;font-size:10px"><a style="width:400px" href="'.$fila->url.'">'.$fila->url.'</a></td>';
-                   }else{
-                     echo '<td style="text-align:center;"><a style="width:400px" href="'.$fila->url.'">'.$fila->url.'</a></td>';
-                   }
+                   echo '<td style="text-align:center;width:70%"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
                  }else{
-                   echo '<td style="text-align:center;"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;width:70%"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
-                 echo '<td style="text-align:center;width:200px">
+                 echo '<td style="text-align:center;width:20%">
                     <a style="margin-left:5px;" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
                     <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-danger">Borrar</a>
                 </td>
