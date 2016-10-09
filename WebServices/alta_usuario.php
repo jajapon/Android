@@ -23,9 +23,9 @@
    $userpass = $_GET["userpass"];
    $email = $_GET["email"];
    //$query = 'INSERT INTO USUARIO VALUES("prueba","1234","s@gmail.com");';
-   $query = 'INSERT INTO usuario VALUES("'.$username.'","'.$userpass.'","'.$email.'");';
+   $query = 'INSERT INTO usuario VALUES("'.$username.'","'.$userpass.'","'.$username.'","'.$email.'");';
    if($connection->query($query)){
-
+      echo "el usuario fue dado de alta";
    }else{
       echo $connection->erro;
 
