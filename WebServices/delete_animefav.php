@@ -20,9 +20,9 @@
     }
 
    $username = $_GET["username"];
-   $animeid= $_GET["animeid"];
+   $titulo= $_GET["titulo"];
    //$query = 'INSERT INTO USUARIO VALUES("prueba","1234","s@gmail.com");';
-   $query = 'DELETE FROM listaanimesfavoritos WHERE username="'.$username.' AND animeid='.$animeid.'"';
+   $query = 'DELETE FROM listaanimesfavoritos WHERE username="'.$username.' AND animeid=(SELECT animeid FROM anime WHERE titulo="'.$titulo.'")"';
    if($connection->query($query)){
       echo "el anime fue eliminado de la lista";
    }else{
