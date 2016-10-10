@@ -27,7 +27,6 @@
    if($connection->query($query)){
       echo "el usuario fue dado de alta";
    }else{
-      echo $connection->erro;
-
+      echo "$connection->erro";
    }
 ?>
