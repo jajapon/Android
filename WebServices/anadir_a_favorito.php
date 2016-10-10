@@ -27,7 +27,7 @@
      if ($result->num_rows==0) {
        $query = 'INSERT INTO listaanimesfavoritos VALUES("'.$username.'",'.$animeid.');';
        if($connection->query($query)){
-          echo "el anime fue añadido a tu lista de favoritos";
+          echo "el anime fue anadido a tu lista de favoritos";
        }else{
           echo $connection->erro;
        }
