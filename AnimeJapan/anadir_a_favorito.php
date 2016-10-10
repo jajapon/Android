@@ -21,26 +21,12 @@
 
    $username = $_GET["username"];
    $animeid = $_GET["animeid"];
-   //$query = 'INSERT INTO USUARIO VALUES("prueba","1234","s@gmail.com");';
-   $query = 'SELECT * FROM listaanimesfavoritos WHERE username="'.$username.'" AND animeid='.$animeid.'';
-   if ($result = $connection->query($query)) {
-     if ($result->num_rows==0) {
-       $query = 'INSERT INTO listaanimesfavoritos VALUES("'.$username.'",'.$animeid.');';
-       if($connection->query($query)){
+
+  $query = 'INSERT INTO listaanimesfavoritos VALUES("'.$username.'",'.$animeid.');';
+    if($connection->query($query)){
           echo "el anime fue anadido a tu lista de favoritos".$query;
-       }else{
+    }else{
           echo $connection->erro;
-       }
-     } else {
-       $query = 'DELETE FROM listaanimesfavoritos WHERE username="'.$username.'" AND animeid='.$animeid.';';
-       if($connection->query($query)){
-          echo "el anime fue eliminado de la lista de favoritos".$query;
-       }else{
-          echo $connection->error;
-       }
-     }
-   }else{
-     echo $connection->erro;
-   }
+    }
 
 ?>
