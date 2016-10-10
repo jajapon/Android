@@ -29,13 +29,18 @@
        if($connection->query($query)){
           echo "el anime fue añadido a tu lista de favoritos";
        }else{
-          echo "$connection->erro";
+          echo $connection->erro;
        }
      } else {
-       echo "El anime fue añadido a favoritos anteriormente";
+       $query = 'DELETE FROM listaanimesfavoritos WHERE username="'.$username.'" AND animeid='.$animeid.';';
+       if($connection->query($query)){
+          echo "el anime fue eliminado de la lista de favoritos";
+       }else{
+          echo $connection->error;
+       }
      }
    }else{
-     echo "$connection->erro";
+     echo $connection->erro;
    }
 
 ?>
