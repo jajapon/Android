@@ -15,7 +15,7 @@
    $jsonArray = array();
    $username = $_GET["username"];
    $animeid = $_GET["animeid"];
-   $query = 'SELECT * FROM listaanimesfavoritos WHERE username="'.$username.'" AND animeid='.$animeid.'';
+   $query = 'SELECT COUNT(*) as total FROM listaanimesfavoritos WHERE username="'.$username.'" AND animeid='.$animeid.'';
    if($result = $connection->query($query)){
      if ($result->num_rows==0) {
 
