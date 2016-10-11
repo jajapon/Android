@@ -10,15 +10,14 @@ if (isset($_ENV['OPENSHIFT_APP_NAME'])) {
     $db_password='1234'; //my db password
     $db_name='animejapan'; //my db name
 }
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+   //TESTING IF THE CONNECTION WAS RIGHT
+if ($connection->connect_errno) {
+     printf("Connection failed: %s\n", $connection->connect_error);
+     exit();
 
-   $connection = new mysqli($localhost, $username, $password, $database);
-      //TESTING IF THE CONNECTION WAS RIGHT
-   if ($connection->connect_errno) {
-        printf("Connection failed: %s\n", $connection->connect_error);
-        exit();
-
-   }else{
-   }
+}else{
+}
    $jsonArray = array();
    $username = $_GET["username"];
    $animeid = $_GET["animeid"];
