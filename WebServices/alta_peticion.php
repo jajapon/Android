@@ -23,7 +23,7 @@
    $username = $_GET["username"];
    //$query = 'INSERT INTO USUARIO VALUES("prueba","1234","s@gmail.com");';
    $consulta="SELECT * FROM peticion WHERE nombreanime = '$animepedido' AND username='$username'" ;
-   if($result = $connection->query($query)){
+   if($result = $connection->query($consulta)){
      if ($result->num_rows==0) {
        $query = 'INSERT INTO peticion VALUES(NULL,"'.$username.'","'.$animepedido.'","Peticion realizada, en breves recibiras respuesta");';
        if($connection->query($query)){
