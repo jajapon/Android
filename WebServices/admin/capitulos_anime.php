@@ -147,9 +147,9 @@
                  <td style="width:5%;text-align:center">'.$fila->parte.'</td>';
 
                  if(strlen($fila->url) > 14){
-                   echo '<td style="text-align:center;width:70%"><a href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;width:70%"><a target="_blank" href="'.$fila->url.'">'.$fila->url.'</a></td>';
                  }else{
-                   echo '<td style="text-align:center;width:70%"><a href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center;width:70%"><a target="_blank" href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
                  echo '<td style="text-align:center;width:20%">
                     <a style="margin-left:5px;" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
