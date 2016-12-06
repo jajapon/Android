@@ -99,17 +99,27 @@
 
     <div class="table-responsive" style="margin-top:80px;background-color:white;opacity:0.9;">
       <div>
-        <div style="float:left;width:30%">
+        <div style="float:left;width:45%">
           <form role="form" action="index.php" style="margin-top:10px;margin-left:10px" method="GET">
             <div class="row">
-              <div class="col-sm-12 col-md-8">
-                <div class="form-group">
-                  <input type="text" name="anime" id="anime" class="form-control input-sm" placeholder="Anime">
-                </div>
-              </div>
               <div class="col-sm-12 col-md-4">
                 <div class="form-group">
-                  <input type="submit" value="Buscar" class="btn btn-info btn-block" style="height:30px">
+                  <input type="text" name="anime" style="height:35px"  id="anime" class="form-control input-sm" placeholder="Anime">
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-5">
+                <div class="form-group">
+                  <select class="form-control" name="idioma" id="idioma" style="height:35px">
+                    <option value="nada">Seleccione un idioma</option>
+                    <option value="ESP">Español</option>
+                    <option value="LAT">Latino</option>
+                    <option value="SUB">Sub Español</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-3">
+                <div class="form-group">
+                  <input type="submit" value="Buscar" class="btn btn-info btn-block" style="height:35px" style="height:30px">
                 </div>
               </div>
             </div>
@@ -117,7 +127,7 @@
           </form>
         </div>
         <div style="float:right">
-          <a style="margin-right:10px;margin-top:10px;height:30px" href="index.php?descarga=ok" class="btn btn-info">Descarga APK Android</a>
+          <a style="margin-right:10px;margin-top:10px;height:35px" href="index.php?descarga=ok"  class="btn btn-info">Descarga APK Android</a>
         </div>
       </div>
     <table class="table .table-bordered" style="margin-top:20px;" >
@@ -132,7 +142,11 @@
       <?php
           include 'conexion.php';
           if(isset($_GET["anime"])){
-            $consulta = "SELECT * FROM anime WHERE titulo LIKE '%".$_GET["anime"]."%' AND animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999) ORDER BY titulo";
+            if($_GET["idioma"] == "nada"){
+              $consulta = "SELECT * FROM anime WHERE titulo LIKE '%".$_GET["anime"]."%' AND animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999) ORDER BY titulo";
+            }else{
+              $consulta = "SELECT * FROM anime WHERE titulo LIKE '%".$_GET["anime"]."%' AND idioma = '".$_GET["idioma"]."' AND animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999) ORDER BY titulo";
+            }
           }else{
             $consulta = "SELECT * FROM anime WHERE animeid NOT IN(SELECT animeid FROM anime WHERE animeid =9999) ORDER BY titulo";
           }

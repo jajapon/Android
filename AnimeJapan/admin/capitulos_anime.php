@@ -126,7 +126,26 @@
       </center>';
        ?>
        <div style="background-color:#143393;font-size:18px;width:100%;height:40px;text-align:center;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold">Capítulo</div>
+       <div style="width:30%;margin:0 auto;">
+         <form role="form" action="capitulos_anime.php" style="margin-top:10px;margin-left:10px" method="GET">
+           <div class="row">
+             <div class="col-sm-12 col-md-8">
+               <div class="form-group">
+                 <input type="number" min="0" name="cap" style="height:35px"  id="cap" class="form-control input-sm" placeholder="Numero de capitulo">
+                 <input type="hidden" name="animeid" style="height:35px" value="<?php  echo $_GET['animeid'] ?>"  id="animeid" class="form-control input-sm" >
+                 <input type="hidden" name="tit" style="height:35px"  value="<?php  echo $_GET['tit'] ?>" id="tit" class="form-control input-sm" >
+                 <input type="hidden" name="ncaps" style="height:35px" value="<?php  echo $_GET['ncaps'] ?>"  id="ncaps" class="form-control input-sm">
+               </div>
+             </div>
+             <div class="col-sm-12 col-md-4">
+               <div class="form-group">
+                 <input type="submit" value="Buscar" class="btn btn-info btn-block" style="height:35px" style="height:30px">
+               </div>
+             </div>
+           </div>
 
+         </form>
+       </div>
     <table class="table .table-bordered" style="margin-top:20px;" >
        <tr>
         <th style="text-align:center;">Capitulo</th>
@@ -136,7 +155,15 @@
       </tr>
       <?php
           include 'conexion.php';
-          $consulta = "SELECT * FROM capitulo where animeid = ".$_GET['animeid'].";";
+          if (isset($_GET["cap"])){
+            if($_GET["cap"]==""){
+              $consulta = "SELECT * FROM capitulo where animeid = ".$_GET['animeid'].";";
+            }else{
+              $consulta = "SELECT * FROM capitulo where animeid = ".$_GET['animeid']." AND ncapitulo =".$_GET['cap'].";";
+            }
+          }else{
+            $consulta = "SELECT * FROM capitulo where animeid = ".$_GET['animeid'].";";
+          }
           if ($result = $connection->query($consulta)){
             if($result->num_rows==0){
 
