@@ -182,7 +182,8 @@
           </div>
 
         </form>
-    <table class="table .table-bordered" style="margin-top:20px;" >
+    <div class="container" style="padding-left:0px;padding-right:30px">
+      <table class="table col-md-12 col-xs-5" style="margin-top:20px;">
        <tr>
         <th style="text-align:center;">Número de capitulo</th>
         <th style="text-align:center;">Parte</th>
@@ -209,9 +210,9 @@
                  <td style="text-align:center">'.$fila->parte.'</td>';
 
                  if(strlen($fila->url) > 14){
-                   echo '<td style="text-align:center;width:80%"><a target="_blank" href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center"><a target="_blank" href="'.$fila->url.'">'.$fila->url.'</a></td>';
                  }else{
-                   echo '<td style="text-align:center;width:80%"><a target="_blank" href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center"><a target="_blank" href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
                echo '</tr>';
               }
@@ -219,10 +220,10 @@
           }else{
             echo $connection->error();
           }
-          echo '</table>';
 
        ?>
-
+       </table>
+      </div>
        <?php
             if(isset($_GET["capi"])){
               $animeid = $_GET["animeid"];

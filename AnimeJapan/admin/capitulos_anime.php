@@ -97,7 +97,7 @@
 
     </nav>
     <div class="container fondo" >
-    <div class="table-responsive" style="margin-top:80px;background-color:white;opacity:0.9;">
+    <div  style="margin-top:80px;background-color:white;opacity:0.9;">
       <div style="font-size:18px;width:100%;height:80px;margin-left:7%;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold"> <h2 class="formato3"><?php echo $_GET["tit"]; ?></h2> </div>
       <div class="container">
           <div class="col-lg-4 col-md-4 col-xs-12">
@@ -143,7 +143,8 @@
            </div>
 
          </form>
-    <table class="table .table-bordered" style="margin-top:20px;" >
+    <div class="container table-responsive" style="padding-left:0px;padding-right:30px">
+    <table class="table col-md-12 col-xs-5" style="margin-top:20px;">
        <tr>
         <th style="text-align:center;">Capitulo</th>
         <th style="text-align:center;">Parte</th>
@@ -167,17 +168,17 @@
             }else{
               while($fila = $result->fetch_object()){
                 echo '<tr>
-                 <td style="width:5%;text-align:center">'.$fila->ncapitulo.'</td>
-                 <td style="width:5%;text-align:center">'.$fila->parte.'</td>';
+                 <td style="text-align:center">'.$fila->ncapitulo.'</td>
+                 <td style="text-align:center">'.$fila->parte.'</td>';
 
                  if(strlen($fila->url) > 14){
-                   echo '<td style="text-align:center;width:70%"><a target="_blank" href="'.$fila->url.'">'.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center"><a target="_blank" href="'.$fila->url.'">'.$fila->url.'</a></td>';
                  }else{
-                   echo '<td style="text-align:center;width:70%"><a target="_blank" href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
+                   echo '<td style="text-align:center"><a target="_blank" href="https://www.youtube.com/watch?v='.$fila->url.'">https://www.youtube.com/watch?v='.$fila->url.'</a></td>';
                  }
-                 echo '<td style="text-align:center;width:20%">
-                    <a style="margin-left:5px;" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
-                    <a style="margin-left:5px;" href="capitulos_anime.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-danger">Borrar</a>
+                 echo '<td>
+                    <a style="margin-left:20%;text-align:center" href="modificar_cap.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-warning">Modificar</a>
+                    <a style="margin-left:5px;text-align:center" href="capitulos_anime.php?animeid='.$_GET["animeid"].'&ncaps='.$_GET["ncaps"].'&tit='.$_GET["tit"].'&capi='.$fila->ncapitulo.'&parte='.$fila->parte.'" class="btn btn-danger">Borrar</a>
                 </td>
                </tr>';
               }
@@ -185,9 +186,10 @@
           }else{
             echo $connection->error();
           }
-          echo '</table>';
+       ?>   
+       </table>  
+    </div>
 
-       ?>
 
        <?php
             if(isset($_GET["capi"])){
