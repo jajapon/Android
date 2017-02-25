@@ -103,7 +103,7 @@
         			    				</div>
         			    			</div>
                         <div class="form-group">
-                          <input type="text" id="imagen" name="imagen" class="form-control input-sm" placeholder="Imagen anime" required>
+                          <input type="text" id="imagen" name="imagen" class="form-control input-sm" placeholder="Imagen anime">
                         </div>                        
                         <div class="form-group">
         			    				<input type="number" start="0" name="ncaps" id="ncaps" min="0" value="'.$ncap.'"  max="9999" class="form-control input-sm" placeholder="Número de capitulos" required>
