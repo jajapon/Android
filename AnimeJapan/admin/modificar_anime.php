@@ -102,7 +102,9 @@
         			    					</div>
         			    				</div>
         			    			</div>
-
+                        <div class="form-group">
+                          <input type="text" id="imagen" name="imagen" class="form-control input-sm" placeholder="Imagen anime" required>
+                        </div>                        
                         <div class="form-group">
         			    				<input type="number" start="0" name="ncaps" id="ncaps" min="0" value="'.$ncap.'"  max="9999" class="form-control input-sm" placeholder="Número de capitulos" required>
         			    			</div>
@@ -147,16 +149,21 @@
                    $descripcion = $_POST["descripcion"];
                    $animeid = $_POST["animeid"];
                    $idioma = $_POST["idioma"];
+                   $imagen = $_POST["imagen"];
 
-
+                   if($imagen ==""){
                             $consulta = "UPDATE anime SET titulo = '$anime', idioma = '$idioma', temporada =  $temporada, numcapitulos = $ncaps, descripcion = '$descripcion' WHERE animeid = $animeid;";
-                            if($connection->query($consulta)){
-                              echo "<div style='width:92%;margin:0 auto;color:white;background-color:#04B45F;margin-bottom:10px;border-radius:2px;padding:10px'>El anime fue modificado</div>";
-                              header('Location: index.php');
+                   }else{
+                            $consulta = "UPDATE anime SET titulo = '$anime', idioma = '$idioma', temporada =  $temporada, numcapitulos = $ncaps, descripcion = '$descripcion', imagen = '$imagen' WHERE animeid = $animeid;";
+                   }
 
-                            }else{
-                              echo $connection->error;
-                            }
+                   if($connection->query($consulta)){
+                       echo "<div style='width:92%;margin:0 auto;color:white;background-color:#04B45F;margin-bottom:10px;border-radius:2px;padding:10px'>El anime fue modificado</div>";
+                       header('Location: index.php');
+
+                    }else{
+                       echo $connection->error;
+                    }
 
                 }
              ?>

@@ -127,11 +127,12 @@
     <div class="container fondo" >
     <div class="table-responsive" style="margin-top:80px;background-color:white;opacity:0.9;">
       <div style="font-size:18px;width:100%;height:80px;margin-left:7%;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold"> <h2 class="formato3"><?php echo $_GET["tit"]; ?></h2> </div>
-      <div style="width:100%;height:300px;">
-          <div style="float:left;height:100%;width:30%;margin-left:5%">
+      
+      <div class="container" style="margin-bottom:20px">
+          <div class="col-lg-4 col-md-4 col-xs-12">
              <img src="<?php echo $fila->imagen?>" alt="" style="width:85%;height:85%;margin-left:7.5%;margin-top:5%" />
           </div>
-          <div style="float:left;height:100%;width:55%;margin-left:2%;padding-left:10px;">
+          <div class="col-lg-8 col-md-8 col-xs-12">
               <table style="margin-top:20px">
                 <tr style="height:30px">
                   <th style="width:100px">Temporada: </th>
@@ -162,10 +163,10 @@
           </div>
       </div>
       <div style="background-color:#143393;font-size:18px;width:100%;height:40px;text-align:center;padding-top:10px;padding-bottom:10px;color:white;font-weight:bold">Capítulos</div>
-      <div style="width:30%;margin:0 auto;">
         <form role="form" action="capitulos_anime_user.php" style="margin-top:10px;margin-left:10px" method="GET">
-          <div class="row">
-            <div class="col-sm-12 col-md-8">
+          <div class="container">
+            <div class="col-md-3 col-xs-0"></div>
+            <div class="col-sm-3 col-md-3 col-xs-12">
               <div class="form-group">
                 <input type="number" min="0" name="cap" style="height:35px"  id="cap" class="form-control input-sm" placeholder="Numero de capitulo">
                 <input type="hidden" name="animeid" style="height:35px" value="<?php  echo $_GET['animeid'] ?>"  id="animeid" class="form-control input-sm" >
@@ -173,7 +174,7 @@
                 <input type="hidden" name="ncaps" style="height:35px" value="<?php  echo $_GET['ncaps'] ?>"  id="ncaps" class="form-control input-sm">
               </div>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-2 col-xs-12 col-md-2">
               <div class="form-group">
                 <input type="submit" value="Buscar" class="btn btn-info btn-block" style="height:35px" style="height:30px">
               </div>
@@ -181,7 +182,6 @@
           </div>
 
         </form>
-      </div>
     <table class="table .table-bordered" style="margin-top:20px;" >
        <tr>
         <th style="text-align:center;">Número de capitulo</th>
