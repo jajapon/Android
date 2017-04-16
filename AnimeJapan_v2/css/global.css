@@ -1,0 +1,34 @@
+/* GLOBAL */
+	/* FONTS */
+		@font-face{
+			font-family: Slant;
+			src: url('../fonts/SLANT.TTF');
+		}
+		@font-face{
+			font-family: Transformer;
+			src: url('../fonts/antillesexpandital.ttf');
+		}
+		@font-face{
+			font-family: aldoapache;
+			src: url('../fonts/AldotheApache.ttf');
+		}
+		@font-face{
+			font-family: kenyanCoffee;
+			src: url('../fonts/kenyan_coffee.ttf');
+		}
+		@font-face{
+			font-family: quantify;
+			src: url('../fonts/quantify.ttf');
+		}
+		@font-face{
+			font-family: builttiltingsb;
+			src: url('../fonts/builttitlingsb.ttf');
+		}
+		@font-face{
+			font-family: RoundedElegance;
+			src: url('../fonts/Rounded_Elegance.ttf');
+		}
+		@font-face{
+			font-family: bigNoodleTitling;
+			src: url('../fonts/big_noodle_titling.ttf');
+		}

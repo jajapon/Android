@@ -1,0 +1,391 @@
+/* HOME */
+	body{
+		width:100%;
+	}
+	body,html{
+		height:100%;
+	}
+	/* HEADER */
+			header{
+				position:relative!important;
+				top:0px;
+				width:100% !important;
+				margin:0px !important;
+				padding:0px !important;
+				z-index:999;
+			}
+
+			/* MEDIA */
+				@media screen and (max-width: 728px) {
+					header{
+						width:100%!important;
+					}
+				    header > div {
+				        width:100% !important;
+						margin:0px !important;
+						padding:0px !important;
+				    }
+				}
+		
+		/* MENU */
+			
+			nav{
+				position:fixed;
+				background-color:#1C1C1C !important;
+				border:0px !important;
+				border-radius:0px !important;
+				margin-bottom:0px !important;
+			}
+
+			.navbar-brand{
+				padding:3px 10px !important;
+			}
+
+			.navbar-brand img{
+				height:100%;
+			}
+
+			nav li a {
+				color:#FFFFFF !important;
+			}
+			.navbar-default .navbar-nav>li:hover>a {
+			    background-color: #424242!important;
+			}
+			.navbar-default .navbar-nav>.active>a {
+			    background-color: #424242!important;
+			}
+
+	/* SECTION */
+		section{
+			position: relative !important;
+			height:92.5%;
+			width:100%;
+			background-color: #D8D8D8!important;
+		}
+		article, aside, details, figcaption, figure, footer, hgroup, main, menu, nav, section, summary {
+		    display: block; 
+		    position: relative !important;
+		}
+		/* MENU */
+			#menu_section{
+				position:fixed;
+				top:0px;
+				width:15% !important;
+				height:100%;
+				background-color: #0B4C5F;
+				margin:0px;
+				padding:0px;
+				float:left;
+			}
+
+			#menu_section ul{
+				width:100%;
+				list-style-type:none;
+				padding:0px;
+				margin:0px;
+			}
+			#menu_section ul > li:first-child{
+				border-top:solid #FFFFFF 1px!important;
+			}
+			#menu_section ul > li {
+				color:#FFFFFF;
+				border-bottom:solid #FFFFFF 1px;
+				padding-left:20px;
+				padding-top:10px;
+				padding-bottom:10px;
+				padding-right:10px;
+				font-size:18px;
+				font-family: builttiltingsb;
+			}
+
+
+			#menu_section ul > li:focus, #menu_section ul > li:hover{
+				background-color:#0489B1;
+			}
+
+			.active{
+				background-color:#0489B1;
+			}
+			/* MENDIA SECTION MENU */
+				@media screen and (max-width: 728px) {
+					#menu_section{
+						width:30%!important;
+					}
+					#datos_section{
+						width:70%!important;
+					}
+					#title_section h2{
+						text-align:center;
+						padding-left:20px!important;
+						padding-right:20px!important;
+					}
+					#menu_section ul > li {
+
+						padding-left:3px;
+						padding-right:3px;
+						padding-top:10px;
+						padding-bottom:10px;
+					}
+				}
+		/* CONTENT */
+			#datos_section{
+				margin:0px;
+				padding:0px;
+				width:85%;
+				float:right;
+			}
+			#datos_anime_info{
+				margin:0px;
+				padding:0px;
+				width:85%;
+				float:left;
+			}
+			#title_section{
+				background-image:url('../imgs/repeat_title.png');
+				background-size: contain;
+				padding-top:10px;
+				padding-bottom:10px;
+				margin:0px !important;
+			}
+
+			#title_section h2{
+				margin:0px!important;
+				color:#FFFFFF;
+				padding-left:40px;
+				font-family: Transformer;
+				font-size:46px;
+			}
+
+			#content_section{
+				width:100%;
+				background-color: #D8D8D8!important;
+			}
+
+			#content_section > div{
+				margin-bottom:20px;
+			}
+
+			#content_section > div > div:first-child{
+				cursor:pointer;
+			}
+
+			#content_section > div > div:first-child > img{
+				width:100%;
+				border-bottom-right-radius:5px;
+				border-bottom-left-radius:5px;
+				cursor:pointer;
+			}
+			
+			/* GENERO */
+				#menu_content{
+					width:100%;
+					height:auto;
+					background-color: #FFFFFF;
+					padding:0px;
+				}
+
+				#menu_content ul li{
+					float:left;
+					list-style-type: none;
+					height:100%;
+					padding:10px;
+					font-weight:bold;
+				}
+
+				#menu_content ul li:hover{
+					color:#FFFFFF;
+					background-color:#0489B1;
+					font-weight:bold;
+				}
+
+				.active_genero{
+					color:#FFFFFF;
+					background-color:#0489B1;
+					font-weight:bold;
+				}
+
+			/* POPULAR*/
+				#content_section_popular{
+					width:100%;
+					background-color: #D8D8D8!important;
+					padding:0px;
+					position:relative;
+				}
+				#content_section_popular > div{
+					border:solid #FFFFFF 1px;
+					position:relative
+				}
+
+				#content_section_popular #first_popular{
+					border:solid #FFFFFF 1px;
+					padding:0px;
+				}
+
+				#content_section_popular #others_popular{
+					border:solid #FFFFFF 1px;
+					padding:0px;
+					position:relative;
+				}
+
+				#others_popular img, #first_popular img{
+					width:100%;
+				}
+
+
+				#first_popular > div{
+					width:100%;
+					position:absolute;
+					background-color: rgba(0,0,0,0.7);
+					bottom:0px;
+				}
+
+				#first_popular > div > h1{
+					font-family:aldoapache;
+					text-align:center;
+					color:#FFFFFF;
+					padding:10px;
+					margin:0px;
+				}
+
+				#others_popular > div{
+					border:solid #FFFFFF 1px;
+					padding:0px;
+				}
+
+				#others_popular > div > div{
+					width:100%;
+					position:absolute;
+					background-color: rgba(0,0,0,0.7);
+					bottom:0px;
+				}
+
+				#others_popular > div > div > h1{
+					font-family:aldoapache;
+					text-align:center;
+					color:#FFFFFF;
+					font-size:20px;
+					padding:10px;
+					margin:0px;
+				}
+
+				#subtitle_section{
+					margin-top:15px;
+					color:#FFFFFF;
+					background-color: #0B3861 !important;
+					opacity:0.7;
+					font-family: builttiltingsb;
+					font-size:30px;
+					border: 0px !important;
+				}
+
+				#subtitle_section > h2{
+					margin-top:10px;
+					margin-bottom:10px;
+				}
+				/* MENDIA SECTION POPULAR */
+					@media screen and (max-width: 728px) {
+						#first_popular > div > h1{
+							font-size:20px;
+						}
+					}
+			/* ANIMES */
+				#content_anime_info{
+					margin:0px;
+					padding-top:10px;
+					padding-left:10px;
+					padding-right:20px;
+					padding-bottom:20px;
+					background-color:white !important;
+					height:100%;	
+				}
+				#imagen_anime{
+					width:100%;
+				}
+
+				#data_anime_info{
+					font-family:RoundedElegance;
+				}
+
+				#data_anime_info #table_title_info{
+					font-weight: bold;
+					vertical-align: top;
+  					text-align: left;
+  					padding:5px;
+				}
+				#data_anime_info #table_content_info{
+  					padding:5px;
+  					text-align: justify;
+				}
+				.title_temp{
+					background-color:#000000;
+					padding:4px 10px !important;
+					font-family:builttiltingsb;
+					margin-top:6px;
+					height:40px;
+				}
+				.title_temp h2{
+					color:white;
+					float:left;
+					margin:0px;
+					margin-top:4px;
+					font-size:24px
+				}
+				.title_temp img{
+					float:right;					
+				}
+				.title_temp span{
+					float:right;	
+					color:white;
+					font-size:20px;	
+					border:solid #FFFFFF 2px;
+					border-radius:30px;
+					padding:3px;
+					cursor:pointer;			
+				}
+				#data_anime_cap{
+					font-size:15px;
+					padding:2px 10px;
+				}
+				#data_anime_cap > span{
+					float:left;
+					margin-right:10px;
+					padding-top:7px;
+				}
+				#data_anime_cap > p{
+					display:inline;
+					padding-top:4px;
+					float:left;
+				}
+
+				/* MEDIA */
+					@media screen and (max-width: 728px) {
+						#data_anime_info{
+							margin-top:10px;
+						}
+
+						#data_anime_info #table_title_info{
+		  					padding:0px;
+						}
+						#data_anime_info #table_content_info{
+		  					padding:0px;
+						}
+						.title_temp h2{
+							margin-top:10px;
+							font-size:15px
+						}
+						#data_anime_cap{
+							font-size:15px !important;
+						}
+						#data_anime_cap > p{
+							display:none;
+						}
+						#data_anime_cap{
+							font-size:15px;
+							padding:10px;
+						}
+						#data_anime_cap span{
+							padding-top:0px;
+							margin-right:0px;
+						}
+					}
+		
