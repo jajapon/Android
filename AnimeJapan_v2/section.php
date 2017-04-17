@@ -14,7 +14,7 @@
 			<li id="deportes" onclick="changeSectionGenero('genero','deportes')">Deportes</li>
 			<li id="romance" onclick="changeSectionGenero('genero','romance')">Romance</li>
 			<li id="aventura" onclick="changeSectionGenero('genero','aventura')">Aventura</li>
-			<li id="aventura" onclick="changeSectionGenero('genero','comedia')">Comedia</li>
+			<li id="comedia" onclick="changeSectionGenero('genero','comedia')">Comedia</li>
 		</ul>
 	</div>
 
@@ -108,7 +108,7 @@
 			if($result = $connection->query($query)){
 		 		while($row = $result->fetch_object()){
 		  		?>
-					<div class="col-md-3" onclick="loadAnimeInfo(<?php echo $row->id;?>)">
+				<div class="col-md-3" onclick="loadAnimeInfo(<?php echo $row->id;?>)">
 					<img src="./imgs/animes/<?php echo $row->img_defecto;?>">
 					<div>
 						<h1><?php echo $row->nombre ?></h1>
@@ -312,6 +312,11 @@
 <div id="title_section" class="row">
 	<h2>ÁNIMES</h2>
 </div>
+<div id="look_section" class="row" style="background-color:#084B8A;margin:0px;padding:0px">
+	<div class="col-md-12" style="padding:0px">
+       	<input type="text" id="lookfor_input" name="lookfor_input" onkeyup="loadAnimeInfoLook()" placeholder="Introduce el anime" class="form-control" style="padding:20px 20px!important; font-size:18px;width:100%;border-radius:0px">
+    </div>
+</div>
 
 <div id="content_section" class="container" style="padding:0px!important">
 	<div id="col-md-12" style="margin:0px">
@@ -420,6 +425,11 @@
 	?>
 <div id="title_section" class="row">
 	<h2>ÁNIMES</h2>
+</div>
+<div id="look_section" class="row" style="background-color:#084B8A;margin:0px;padding:0px">
+	<div class="col-md-12" style="padding:0px">
+       	<input type="text" id="lookfor_input" name="lookfor_input" onkeyup="loadAnimeInfoLook()" placeholder="Introduce el anime" class="form-control" style="padding:20px 20px!important; font-size:18px;width:100%;border-radius:0px">
+    </div>
 </div>
 
 <div id="content_section" class="container" style="padding:0px!important">

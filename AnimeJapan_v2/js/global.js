@@ -132,3 +132,26 @@ function showContentSeasonAnime(animeid, season){
 		document.getElementById("content_temp_"+season).style.display="none";
 	}
 }
+
+function loadAnimeInfoLook(){
+	var nombreAnime = "";
+	var uri = './php/anime_search.php';
+	var dataString = '';
+
+	if(document.getElementById("lookfor_input").value !="" || document.getElementById("lookfor_input").value != null){
+		nombreAnime = document.getElementById("lookfor_input").value;
+	}else{
+		nombreAnime = "";
+	}
+	dataString = dataString+'&nombre_anime='+nombreAnime;
+
+    $.ajax({
+       type : "GET",
+       url : uri,
+       data : dataString,
+       datatype: "json",
+       success:function(data){
+			document.getElementById("content_section").innerHTML = data;
+       }           
+    });
+}
