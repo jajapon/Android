@@ -29,12 +29,14 @@
     }
 
 
-    $query_old = "SELECT * FROM capitulo WHERE animeid = 67 ORDER BY ncapitulo";
+    $query_old = "SELECT * FROM capitulo WHERE animeid = 11 ORDER BY ncapitulo";
 	$connection_old->query("SET NAMES 'utf8'");
+    echo "hola";
 	if($result = $connection_old->query($query_old)){
+        echo "hola2";
      	while($row = $result->fetch_object()){
-     		if($connection_new->query("INSERT INTO capitulo VALUES(41,50,".$row->ncapitulo.",".$row->parte.",'".$row->url."')")){
-
+            echo "hola3";
+     		if($connection_new->query("INSERT INTO capitulo VALUES(68,81,".$row->ncapitulo.",".$row->parte.",'".$row->url."')")){
      		}else{
      			echo $connection_new->error;
      		}
