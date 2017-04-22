@@ -125,8 +125,8 @@
 <?php
 		}else if($_GET["section"]=="ver_capitulo"){
 
-			if(isset($_GET["idanime"]) && isset($_GET["idtemporada"]) && isset($_GET["cap"])){
-			$query = "SELECT anime.nombre,temporada.num_temporada, capitulo.* FROM capitulo,anime,temporada WHERE anime.id = temporada.id_anime AND temporada.id = capitulo.temporada_id AND capitulo.animeid = ".$_GET["idanime"]." AND capitulo.temporada_id = ".$_GET["idtemporada"]." AND capitulo.ncapitulo = ".$_GET["cap"];
+			if(isset($_GET["idanime"]) && isset($_GET["idtemporada"]) && isset($_GET["cap"]) && isset($_GET["parte"])){
+			$query = "SELECT anime.nombre,temporada.num_temporada, capitulo.* FROM capitulo,anime,temporada WHERE anime.id = temporada.id_anime AND temporada.id = capitulo.temporada_id AND capitulo.animeid = ".$_GET["idanime"]." AND capitulo.temporada_id = ".$_GET["idtemporada"]." AND capitulo.ncapitulo = ".$_GET["cap"]." AND capitulo.parte =".isset($_GET["parte"]);
 
 				include('./php/conexion.php');
 				$connection->query("SET NAMES 'utf8'");
