@@ -12,15 +12,31 @@
 		<td><?php echo $row->parte ?></td>
 		<td>
 			<?php 
-				if(strlen($row->url) > 14){
-                   echo '<a id="data_anime_cap" href="'.$row->url.'" target="_blank"  class="btn btn-danger btn-lg">
-					    <span class="glyphicon glyphicon-facetime-video"></span><p>Ver capítulo</p> 
-					 </a>';
-                 }else{
-                    echo '<a id="data_anime_cap" target="_blank" href="https://www.youtube.com/watch?v='.$row->url.'" class="btn btn-danger btn-lg">
-					    <span class="glyphicon glyphicon-facetime-video"></span><p>Ver capítulo</p> 
-					 </a>';
-                 }
+
+			$urlvideo = "";
+ 			if(strlen($row->url) > 14){
+               $urlvideo = $row->url;
+             }else{
+               $urlvideo = "https://www.youtube.com/watch?v=".$row->url;
+             }
+             $tipovideo = "";
+             if(preg_match('/youtube.com/',$urlvideo)){
+             	$tipovideo = "youtube";
+             }
+             if(preg_match('/'.'vk.com'.'/',$urlvideo)){
+             	if(preg_match('/'.'video_ext'.'/',$urlvideo)){
+             		$tipovideo = "vk";
+             	}
+             }
+            if($tipovideo!=""){
+	            echo '<button id="data_anime_cap" onclick="loadAnimeVideoCap(\'ver_capitulo\','.$row->ncapitulo.','.$row->parte.','.$_POST["animeid"].','.$_POST["season"].')" class="btn btn-danger btn-lg">
+				    <span class="glyphicon glyphicon-facetime-video"></span><p>Ver capítulo</p> 
+				 </button>';
+            }else{
+	            echo '<a id="data_anime_cap" target="_blank" href="'.$urlvideo.'" class="btn btn-danger btn-lg">
+				    <span class="glyphicon glyphicon-facetime-video"></span><p>Ver capítulo</p> 
+				</a>';
+            }
              
 			 ?>
 		</td>

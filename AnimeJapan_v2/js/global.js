@@ -1,3 +1,5 @@
+var isOnFullScreen = false;
+
 $(window).on("popstate", function(e) {
 	window.location = window.location.href;
 });
@@ -132,6 +134,34 @@ function showContentSeasonAnime(animeid, season){
 		document.getElementById("content_temp_"+season).style.display="none";
 	}
 }
+
+function loadAnimeVideoCap(section,cap,parte,idanime,idtemporada){
+	/*history.pushState(null, "", "animes.php?section="+section+'&idanime='+idanime+"&idtemporada="+idtemporada+"&cap="+cap+"&parte="+parte);	
+	var uri = './section.php';
+	var dataString = 'section=ver_capitulo';*/
+	window.location.href = "animes.php?section="+section+'&idanime='+idanime+"&idtemporada="+idtemporada+"&cap="+cap+"&parte="+parte;
+	/*dataString = dataString+'&idanime='+idanime+"&idtemporada="+idtemporada+"&cap="+cap+"&parte="+parte;
+    $.ajax({
+       type : "GET",
+       url : uri,
+       data : dataString,
+       datatype: "json",
+       success:function(data){
+
+       }           
+    });*/
+}
+MediaElementPlayer.prototype.exitFullScreen_org = MediaElementPlayer.prototype.exitFullScreen;
+MediaElementPlayer.prototype.enterFullScreen_org = MediaElementPlayer.prototype.enterFullScreen;
+MediaElementPlayer.prototype.enterFullScreen = function() { 
+	document.getElementById("header").style="z-index:-1";
+ 	this.enterFullScreen_org();
+}
+MediaElementPlayer.prototype.exitFullScreen = function() { 
+	document.getElementById("header").style="z-index:999";
+ 	this.exitFullScreen_org();
+}
+
 
 function loadAnimeInfoLook(){
 	var nombreAnime = "";

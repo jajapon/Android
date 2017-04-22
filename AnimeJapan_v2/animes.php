@@ -6,15 +6,20 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./css/global.css">
 	<link rel="stylesheet" href="./css/anime.css">
+	<link rel="stylesheet" href="./css/videomedia.css">
+	<link rel="stylesheet" href="./css/normalize.min.css">
+    <link rel="stylesheet" href="./css/mediaelementplayer.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./js/mediaelement-and-player.min.js"></script>
+    <script src="./js/demo.js"></script>
     <script src="js/global.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<header class="container-fluid">
+	<header class="container-fluid" id="header">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 			   

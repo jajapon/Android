@@ -371,7 +371,8 @@
 						}
 						.title_temp h2{
 							margin-top:10px;
-							font-size:15px
+							font-size:13px!important;
+
 						}
 						#data_anime_cap{
 							font-size:15px !important;
@@ -386,6 +387,9 @@
 						#data_anime_cap span{
 							padding-top:0px;
 							margin-right:0px;
+						}
+						#title_section h2{
+							font-size:29px;
 						}
 					}
 		

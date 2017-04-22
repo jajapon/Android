@@ -121,6 +121,77 @@
 			</div>
 		</div>
 	</div>
+
+<?php
+		}else if($_GET["section"]=="ver_capitulo"){
+
+			if(isset($_GET["idanime"]) && isset($_GET["idtemporada"]) && isset($_GET["cap"])){
+			$query = "SELECT anime.nombre,temporada.num_temporada, capitulo.* FROM capitulo,anime,temporada WHERE anime.id = temporada.id_anime AND temporada.id = capitulo.temporada_id AND capitulo.animeid = ".$_GET["idanime"]." AND capitulo.temporada_id = ".$_GET["idtemporada"]." AND capitulo.ncapitulo = ".$_GET["cap"];
+
+				include('./php/conexion.php');
+				$connection->query("SET NAMES 'utf8'");
+
+				if($result = $connection->query($query)){
+			 		while($row = $result->fetch_object()){
+			 			$urlvideo = "";
+			 			if(strlen($row->url) > 14){
+		                   $urlvideo = $row->url;
+		                 }else{
+		                   $urlvideo = "https://www.youtube.com/watch?v=".$row->url;
+		                 }
+		                 $tipovideo = "";
+		                 if(preg_match('/youtube.com/',$urlvideo)){
+		                 	$tipovideo = "youtube";
+		                 }
+		                 if(preg_match('/'.'vk.com'.'/',$urlvideo)){
+		                 	if(preg_match('/'.'video_ext'.'/',$urlvideo)){
+		                 		$tipovideo = "vk";
+		                 	}
+		                 }
+	?>
+	<div id="title_section" class="row">
+		<h2 style="text-align:center"><?php echo $row->nombre ?></h2>
+	</div>
+	<div id="subtitle_section" style="margin:0px">
+		<h2 style="text-align:center;margin:0px">Temporada<?php echo " ".$row->num_temporada.": Capitulo ".$row->ncapitulo ?></h2>
+	</div>
+
+	<div id="content_section" class="container" style="padding:0px;z-index:10000!important">
+		<div id="col-md-12" style="margin:0px">
+			<div class="col-md-12" id="video" style="padding:0px;margin-top:10px">
+				<div class="col-md-offset-1 col-md-10 col-xs-12">
+
+				<?php 
+
+					if($tipovideo!=""){
+						if($tipovideo=="youtube"){
+				?>
+			        <div class="players" id="player1-container">        
+			            <div class="media-wrapper">
+			                <video id="player1" width="640" height="360" style="max-width:100%;" preload="none">
+			                    <source src="<?php echo $urlvideo;?>" type="video/youtube">
+			                </video>
+			            </div>
+			            <br>
+			        </div>
+				</div>
+		  		<?php
+		  				}else if($tipovideo=="vk"){
+		  				 ?>
+		  					<iframe style="width:100%;height:500px" src="<?php echo $urlvideo?>" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+		  		<?php
+		  				}
+		  			}
+		      	}
+		    }else{
+		    	echo $connection->error;
+		    }
+		}
+		?>
+			</div>
+		</div>
+	</div>
 <?php
 		}else if($_GET["section"]=="ultimos"){
 ?>
