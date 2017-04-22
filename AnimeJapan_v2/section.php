@@ -137,7 +137,7 @@
 			 			if(strlen($row->url) > 14){
 		                   $urlvideo = $row->url;
 		                 }else{
-		                   $urlvideo = "https://www.youtube.com/watch?v=".$row->url;
+		                   $urlvideo = "https://www.youtube.com/embed/".$row->url;
 		                 }
 		                 $tipovideo = "";
 		                 if(preg_match('/youtube.com/',$urlvideo)){
@@ -169,13 +169,8 @@
 					if($tipovideo!=""){
 						if($tipovideo=="youtube"){
 				?>
-			        <div class="players" id="player1-container">        
-			            <div class="media-wrapper">
-			                <video id="player1" width="640" height="360" style="max-width:100%;" preload="none">
-			                    <source src="<?php echo $urlvideo;?>" type="video/youtube">
-			                </video>
-			            </div>
-			            <br>
+			        <div class="players" id="player1-container">    
+			        	<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
 			        </div>
 				</div>
 		  		<?php
