@@ -148,6 +148,9 @@
 		                 		$tipovideo = "vk";
 		                 	}
 		                 }
+		                 if(preg_match('/'.'rutube'.'/',$urlvideo)){
+		                 	$tipovideo = "rutube";
+		                 }
 	?>
 	<div id="title_section" class="row">
 		<h2 style="text-align:center"><?php echo $row->nombre ?></h2>
@@ -177,6 +180,11 @@
 				</div>
 		  		<?php
 		  				}else if($tipovideo=="vk"){
+		  				 ?>
+		  					<iframe  src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
+
+		  		<?php
+		  				}else if($tipovideo=="rutube"){
 		  				 ?>
 		  					<iframe  src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
 

@@ -27,6 +27,8 @@
              	if(preg_match('/'.'video_ext'.'/',$urlvideo)){
              		$tipovideo = "vk";
              	}
+             }if(preg_match('/'.'rutube'.'/',$urlvideo)){
+             	$tipovideo = "rutube";
              }
             if($tipovideo!=""){
 	            echo '<button id="data_anime_cap" onclick="loadAnimeVideoCap(\'ver_capitulo\','.$row->ncapitulo.','.$row->parte.','.$_POST["animeid"].','.$_POST["season"].')" class="btn btn-danger btn-lg">
