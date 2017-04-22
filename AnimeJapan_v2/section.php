@@ -178,7 +178,7 @@
 		  		<?php
 		  				}else if($tipovideo=="vk"){
 		  				 ?>
-		  					<iframe style="width:100%;height:500px" src="<?php echo $urlvideo?>" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+		  					<iframe  src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
 
 		  		<?php
 		  				}
