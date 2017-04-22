@@ -391,12 +391,12 @@
 						#title_section h2{
 							font-size:29px;
 						}
-						iframe{
+						#frameexterno{
 							height:200px !important;
 						}
 					}
 
-					iframe{
+					#frameexterno{
 						width:100%;
 						height:500px;
 					}

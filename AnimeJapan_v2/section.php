@@ -181,12 +181,12 @@
 		  		<?php
 		  				}else if($tipovideo=="vk"){
 		  				 ?>
-		  					<iframe  src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
+		  					<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
 
 		  		<?php
 		  				}else if($tipovideo=="rutube"){
 		  				 ?>
-		  					<iframe  src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
+		  					<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
 
 		  		<?php
 		  				}
