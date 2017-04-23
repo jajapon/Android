@@ -19,7 +19,7 @@
     $db_password='1234'; //my db password
     $db_name='animejapan'; //my db name
 
-    $connection_old= new mysqli($db_host, $db_user, $db_password, $db_name);
+    /*$connection_old= new mysqli($db_host, $db_user, $db_password, $db_name);
        //TESTING IF THE CONNECTION WAS RIGHT
     if ($connection_old->connect_errno) {
          printf("Connection failed: %s\n", $connection_old->connect_error);
@@ -43,5 +43,24 @@
      	}
      }else{
      	echo $connection_old->error;     	
+     }*/
+
+      $query_new = "SELECT * FROM capitulo WHERE animeid = 32 ORDER BY ncapitulo";
+        $connection_new->query("SET NAMES 'utf8'");
+
+        if($result = $connection_new->query($query_new)){
+            while($row = $result->fetch_object()){
+                echo $row->url."<br/>";
+                $bodytag = str_replace("https://www.youtube.com/watch?v=", "", $row->url);
+                echo $bodytag."<br/>";
+                echo "UPDATE capitulo SET url = '".$bodytag."' WHERE animeid = ".$row->animeid." AND temporada_id = ".$row->temporada_id." AND ncapitulo = ".$row->ncapitulo." AND parte = ".$row->parte."<br/>";
+                /*if($connection_new->query("UPDATE capitulo SET url = '".$bodytag."' WHERE animeid = ".$row->animeid." AND temporada_id = ".$row->temporada_id." AND ncapitulo = ".$row->ncapitulo." AND parte = ".$row->parte)){
+                }else{
+                    echo $connection_new->error;
+                }*/
+            }
+         }else{
+            echo $connection_old->error;        
      }
+
 ?>

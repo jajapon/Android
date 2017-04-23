@@ -165,7 +165,6 @@
 				<div class="col-md-offset-1 col-md-10 col-xs-12">
 
 				<?php 
-
 					if($tipovideo!=""){
 						if($tipovideo=="youtube"){
 				?>
