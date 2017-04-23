@@ -5,6 +5,9 @@
 	body,html{
 		height:100%;
 	}
+	video{
+		width:100% !important;
+	}
 	/* HEADER */
 			header{
 				position:relative!important;

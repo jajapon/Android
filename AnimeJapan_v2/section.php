@@ -151,6 +151,9 @@
 		                 if(preg_match('/'.'rutube'.'/',$urlvideo)){
 		                 	$tipovideo = "rutube";
 		                 }
+		                 if(preg_match('/'.'googlevideo.com'.'/',$urlvideo)){
+		                 	$tipovideo = "animeflv";
+		                 }
 	?>
 	<div id="title_section" class="row">
 		<h2 style="text-align:center"><?php echo $row->nombre ?></h2>
@@ -181,6 +184,11 @@
 		  				}else if($tipovideo=="rutube"){
 		  				 ?>
 		  					<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
+
+		  		<?php
+		  				}else if($tipovideo=="animeflv"){
+		  				 ?>
+		  				 <video controls="" autoplay="" name="media" style="margin-left:15%;width:70%;height:auto" ><source src="<?php echo $urlvideo?>" type="video/mp4"></video>
 
 		  		<?php
 		  				}
