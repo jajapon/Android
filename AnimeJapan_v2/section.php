@@ -188,7 +188,7 @@
 		  		<?php
 		  				}else if($tipovideo=="animeflv"){
 		  				 ?>
-		  				 <video controls="" autoplay="" name="media" style="margin-left:15%;width:70%;height:auto" ><source src="<?php echo $urlvideo?>" type="video/mp4"></video>
+		  				 <video controls="" autoplay="" name="media" style="margin-left:15%!important;width:70%!important;height:auto" ><source src="<?php echo $urlvideo?>" type="video/mp4"></video>
 
 		  		<?php
 		  				}
