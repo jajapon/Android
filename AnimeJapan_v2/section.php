@@ -154,6 +154,11 @@
 		                 if(preg_match('/'.'googlevideo.com'.'/',$urlvideo)){
 		                 	$tipovideo = "animeflv";
 		                 }
+		                 if(preg_match('/'.'tu.tv'.'/',$urlvideo)){
+			             	if(preg_match('/'.'iframe'.'/',$urlvideo)){
+				             	$tipovideo = "tutv";
+			             	}
+			             }
 	?>
 	<div id="title_section" class="row">
 		<h2 style="text-align:center"><?php echo $row->nombre ?></h2>
@@ -189,6 +194,11 @@
 		  				}else if($tipovideo=="animeflv"){
 		  				 ?>
 		  				 <video controls="" autoplay="" name="media" style="margin-left:15%!important;width:70%!important;height:auto" ><source src="<?php echo $urlvideo?>" type="video/mp4"></video>
+
+		  		<?php
+		  				}else if($tipovideo=="tutv"){
+		  				 ?>
+		  				 	<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
 
 		  		<?php
 		  				}

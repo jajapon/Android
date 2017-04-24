@@ -33,6 +33,11 @@
              if(preg_match('/'.'googlevideo.com'.'/',$urlvideo)){
              	$tipovideo = "animeflv";
              }
+             if(preg_match('/'.'tu.tv'.'/',$urlvideo)){
+             	if(preg_match('/'.'iframe'.'/',$urlvideo)){
+	             	$tipovideo = "tutv";
+             	}
+             }
             if($tipovideo!=""){
 	            echo '<button id="data_anime_cap" onclick="loadAnimeVideoCap(\'ver_capitulo\','.$row->ncapitulo.','.$row->parte.','.$_POST["animeid"].','.$_POST["season"].')" class="btn btn-danger btn-lg">
 				    <span class="glyphicon glyphicon-facetime-video"></span><p>Ver capítulo</p> 
