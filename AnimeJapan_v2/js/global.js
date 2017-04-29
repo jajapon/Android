@@ -5,6 +5,9 @@ $(window).on("popstate", function(e) {
 });
 
 function changeSection(section){
+    document.getElementById('datos_section').innerHTML = '<center><img src="imgs/loading.gif" id="loading"/></center><h1 style="font-family:kenyanCoffee;text-align:center" >Cargando...</h1>';
+    document.getElementById('section').style = 'background-color: #FFFFFF !important';
+    document.getElementById("datos_section").style.display = "block";
 
 	history.pushState(null, "", "animes.php?section="+section);
 	var sections = ["animes", "genero", "alfabetico", "ultimos", "populares"];
@@ -30,8 +33,11 @@ function changeSection(section){
        data : dataString,
        datatype: "json",
        success:function(data){
-            document.getElementById('datos_section').innerHTML = data;
-            document.getElementById("datos_section").style.display = "block";
+            setTimeout(function(){
+            	document.getElementById('datos_section').innerHTML = data;
+            	document.getElementById('section').style = 'background-color: #D8D8D8 !important';
+            	document.getElementById("datos_section").style.display = "block";
+            }, 1000);
        }           
     });
 }
@@ -39,6 +45,8 @@ function changeSection(section){
 function changeSectionGenero(section, genero){
 	history.pushState(null, "", "animes.php?section="+section+"&type="+genero);
 	
+	document.getElementById('content_section').innerHTML = '<center><img src="imgs/loading.gif" id="loading"/></center><h1 style="font-family:kenyanCoffee;text-align:center" >Cargando...</h1>';
+
 	var generos= ["todos","accion", "deportes", "romance", "aventura","comedia"];
 
 	for(var i=0; i < generos.length; i++){
@@ -60,13 +68,20 @@ function changeSectionGenero(section, genero){
        data : dataString,
        datatype: "json",
        success:function(data){
-			document.getElementById("content_section").innerHTML = data;
+       		setTimeout(function(){
+				document.getElementById("content_section").innerHTML = data;
+			    document.getElementById('content_section').style = 'background-color: #D8D8D8 !important; padding-left:0px;padding-right:0px';
+				document.getElementById('section').style = 'background-color: #D8D8D8 !important';
+            	document.getElementById("content_section").style.display = "block";
+            }, 500);
        }           
     });
 }
 
 function changeSectionLetter(section, letter){
 	history.pushState(null, "", "animes.php?section="+section+"&letter="+letter);
+	
+	document.getElementById('content_section').innerHTML = '<center><img src="imgs/loading.gif" id="loading"/></center><h1 style="font-family:kenyanCoffee;text-align:center" >Cargando...</h1>';
 	
 	var letters= ["todos","A", "B", "C", "D","F", "G", "H", "I","J", "K", "L", "M","N", "O", "P", "Q","R", "S", "T", "U","W", "X", "Y", "Z"];
 
@@ -89,7 +104,12 @@ function changeSectionLetter(section, letter){
        data : dataString,
        datatype: "json",
        success:function(data){
-			document.getElementById("content_section").innerHTML = data;
+       	    setTimeout(function(){
+				document.getElementById("content_section").innerHTML = data;
+			    document.getElementById('content_section').style = 'background-color: #D8D8D8 !important; padding-left:0px;padding-right:0px';
+				document.getElementById('section').style = 'background-color: #D8D8D8 !important';
+            	document.getElementById("content_section").style.display = "block";
+            }, 500);
        }           
     });
 }
@@ -97,7 +117,9 @@ function changeSectionLetter(section, letter){
 
 function loadAnimeInfo(id){
 	history.pushState(null, "", "animes.php?anime="+id);	
-	
+	document.getElementById('datos_section').innerHTML = '<center><img src="imgs/loading.gif" id="loading"/></center><h1 style="font-family:kenyanCoffee;text-align:center" >Cargando...</h1>';
+	document.getElementById('section').style = 'background-color: #FFFFFF !important';	
+
 	var uri = './section.php';
 	var dataString = 'anime='+id;
 
@@ -107,7 +129,11 @@ function loadAnimeInfo(id){
        data : dataString,
        datatype: "json",
        success:function(data){
-            document.getElementById('datos_section').innerHTML = data;
+       	    setTimeout(function(){
+				document.getElementById("datos_section").innerHTML = data;
+			    document.getElementById('datos_section').style = 'background-color: #FFFFFF !important; padding-left:0px;padding-right:0px';
+            	document.getElementById("datos_section").style.display = "block";
+            }, 500);
        }           
     });
 }
@@ -151,22 +177,14 @@ function loadAnimeVideoCap(section,cap,parte,idanime,idtemporada){
        }           
     });*/
 }
-MediaElementPlayer.prototype.exitFullScreen_org = MediaElementPlayer.prototype.exitFullScreen;
-MediaElementPlayer.prototype.enterFullScreen_org = MediaElementPlayer.prototype.enterFullScreen;
-MediaElementPlayer.prototype.enterFullScreen = function() { 
-	document.getElementById("header").style="z-index:-1";
- 	this.enterFullScreen_org();
-}
-MediaElementPlayer.prototype.exitFullScreen = function() { 
-	document.getElementById("header").style="z-index:999";
- 	this.exitFullScreen_org();
-}
-
 
 function loadAnimeInfoLook(){
 	var nombreAnime = "";
 	var uri = './php/anime_search.php';
 	var dataString = '';
+	document.getElementById('content_section').innerHTML = '<center><img src="imgs/loading.gif" id="loading"/></center><h1 style="font-family:kenyanCoffee;text-align:center" >Cargando...</h1>';
+    document.getElementById('content_section').style = 'background-color: #FFFFFF !important; padding-left:0px;padding-right:0px';
+	document.getElementById('section').style = 'background-color: #FFFFFF !important';
 
 	if(document.getElementById("lookfor_input").value !="" || document.getElementById("lookfor_input").value != null){
 		nombreAnime = document.getElementById("lookfor_input").value;
@@ -181,7 +199,12 @@ function loadAnimeInfoLook(){
        data : dataString,
        datatype: "json",
        success:function(data){
-			document.getElementById("content_section").innerHTML = data;
-       }           
+       	    setTimeout(function(){
+				document.getElementById("content_section").innerHTML = data;
+			    document.getElementById('content_section').style = 'background-color: #D8D8D8 !important; padding-left:0px;padding-right:0px';
+				document.getElementById('section').style = 'background-color: #D8D8D8 !important';
+            	document.getElementById("content_section").style.display = "block";
+            }, 500);       
+       	}           
     });
 }

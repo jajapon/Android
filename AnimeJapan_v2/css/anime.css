@@ -131,6 +131,11 @@
 					}
 				}
 		/* CONTENT */
+			#loading{
+				margin-top:130px;
+				width:10%;
+				min-width:100px;
+			}
 			#datos_section{
 				margin:0px;
 				padding:0px;

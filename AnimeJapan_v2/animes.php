@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="./js/demo.js"></script>
     <script src="js/global.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
@@ -55,7 +54,7 @@
 		  </div>
 		</nav>
 	</header>
-	<section style="position: relative!important;">
+	<section  id="section" style="position: relative!important;">
 		<div class="col-md-2" id="menu_section">
 			<center><img src="imgs/ic_launcher.png" style="height:45px;padding:4px;"/></center>
 			<ul>
