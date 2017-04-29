@@ -25,7 +25,7 @@
  
 <body>
 	<div id="container" style="padding:10px">
-		<div class="col-md-3" style="padding:15px;border-radius:4px">
+		<div class="col-md-4" style="padding:15px;border-radius:4px">
 			<h1 style="margin:0px;padding:5px 10px;background-color:#086A87;color:#FFFFFF;text-align:center;font-family:bigNoodleTitling;font-size:24px;border-top-left-radius:4px;border-top-right-radius:4px">Alta de anime</h1>
 			<form class="form-horizontal" action="anime_gestion.php"  method="POST" id="contact_form" enctype="multipart/form-data">
                 <fieldset style="border:solid lightgray 1px;padding:15px;margin-bottom:15px">
@@ -119,7 +119,7 @@
 			 	}
 			}
 		?>
-		<div class="col-md-3" style="padding:15px;border-radius:4px">
+		<div class="col-md-4" style="padding:15px;border-radius:4px">
 			<h1 style="margin:0px;padding:5px 10px;background-color:#086A87;color:#FFFFFF;text-align:center;font-family:bigNoodleTitling;font-size:24px;border-top-left-radius:4px;border-top-right-radius:4px">Alta de Temporada</h1>
             <form class="form-horizontal" action="anime_gestion.php" method="POST" id="contact_form" enctype="multipart/form-data">
                 <fieldset style="border:solid lightgray 1px;padding:15px" >
@@ -289,8 +289,64 @@
 				 }
 			}
 		?>
-	</div>
+		<div class="col-md-12" style="padding:15px;border-radius:4px">
+			<h1 style="margin:0px;padding:5px 10px;background-color:#086A87;color:#FFFFFF;text-align:center;font-family:bigNoodleTitling;font-size:24px;border-top-left-radius:4px;border-top-right-radius:4px">Subida multiple capitulos</h1>
 
+			<fieldset style="border:solid lightgray 1px;padding:15px" >
+				<div class="col-md-12" style="margin-bottom: 20px">
+					<div class="form-group" style="margin-bottom: 0px !important;">
+		                <div class="col-md-4" style="margin-bottom:10px">
+		                    <div class="input-group">
+		                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+								<select class="form-control" name="d_anime" id="d_anime" onchange="loadAnimeTempsD()" required>
+								<option value="0">---- Selecciona anime ----</option>
+
+								<?php 
+									$connection->query("SET NAMES 'utf8'");   
+									$query = "SELECT * FROM anime ORDER BY nombre";
+									if($result = $connection->query($query)){
+										while($row = $result->fetch_object()){
+
+								?>
+								<option value="<?php echo $row->id ?>"><?php echo $row->nombre ?></option>		
+								<?php 
+										}
+									}
+								?>					  	
+								</select>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="form-group" style="margin-bottom: 0px !important;">
+		                <div class="col-md-4">
+		                    <div class="input-group">
+		                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+								<select class="form-control" name="d_temps" id="d_temps" onchange="loadAnimeTempsCaps()" required>
+									<option value="0">---- Selecciona temporada ----</option>
+			  	
+								</select>
+		                    </div>
+		                </div>
+		            </div>
+	            </div>
+	            <div class="col-md-12">
+	            	<div class="col-md-4">
+	            		<h1 style="margin:0px;padding:5px 10px;background-color:#086A87;color:#FFFFFF;text-align:center;font-family:bigNoodleTitling;font-size:24px;border-top-left-radius:4px;border-top-right-radius:4px">Capitulos</h1>
+	            		<div class="col-md-12" style="max-height: 500px !important; overflow-y: auto !important; border:solid lightgray 1px;">
+		            		<table class="table" id="table_caps">
+							</table>
+		            	</div>
+	            	</div>
+					<div class="col-md-6">
+						<h1 style="margin:0px;padding:5px 10px;background-color:#086A87;color:#FFFFFF;text-align:center;font-family:bigNoodleTitling;font-size:24px;border-top-left-radius:4px;border-top-right-radius:4px">Modificar Capitulo</h1>
+	            		<div class="col-md-12" id="editar_content" style="max-height: 500px !important; overflow-y: auto !important; border:solid lightgray 1px; padding:15px">
+
+	            		</div>
+	            	</div>
+	            </div>
+			</fieldset>
+		</div>
+	</div>
 	<script type="text/javascript">
 		$(function() {
 			$(document).on('change', ':file', function() {
