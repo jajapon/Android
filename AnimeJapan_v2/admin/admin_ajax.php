@@ -39,7 +39,7 @@
 				while($row = $result->fetch_object()){
 					echo '<div class="input-group" style="margin-bottom:20px">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                            <textarea class="form-control" id="enlace_cap" style="height:50px" ;resize: none; name="descripcion" placeholder="Enlace" required="">'.$row->url.'</textarea>
+                            <textarea class="form-control" id="enlace_cap" style="height:70px" ;resize: none; name="descripcion" placeholder="Enlace" required="">'.$row->url.'</textarea>
                          </div>
                          <div class="input-group" style="margin-bottom:20px">
 	                         <div class="col-md-12">
