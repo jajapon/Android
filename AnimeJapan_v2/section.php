@@ -170,7 +170,7 @@
 	<div id="content_section" class="container" style="padding:0px;z-index:10000!important">
 		<div id="col-md-12" style="margin:0px">
 			<div class="col-md-12" id="video" style="padding:0px;margin-top:10px">
-				<div class="col-md-offset-1 col-md-10 col-xs-12">
+				<div class="row col-md-offset-1 col-md-10 col-xs-12">
 
 				<?php 
 					if($tipovideo!=""){
@@ -203,13 +203,31 @@
 		  		<?php
 		  				}
 		  			}
-		      	}
+		      	?>
+		    </div>
+			<div id="row container col-md-10">
+				<center>
+				<?php 
+				if($row->ncapitulo == 1){
+					$siguienteCap = $row->ncapitulo+1;
+					echo '<button type="button" style="position:relative;margin-top:20px!important;margin-bottom:20px" onclick="loadAnimeVideoCap(\''.$_GET['section'].'\','.$siguienteCap.','.$_GET['parte'].','.$_GET['idanime'].','.$_GET['idtemporada'].')" class="btn btn-warning">Siguiente</button>';
+				}else{
+					$siguienteCap = $row->ncapitulo+1;
+					$anteriorCap = $row->ncapitulo-1;
+
+					echo '<button type="button"   style="position:relative;margin-top:20px!important;margin-bottom:20px"  class="btn btn-warning" onclick="loadAnimeVideoCap(\''.$_GET['section'].'\','.$anteriorCap.','.$_GET['parte'].','.$_GET['idanime'].','.$_GET['idtemporada'].')">Anterior</button>
+					<button type="button"   style="position:relative;margin-top:20px!important;margin-bottom:20px"  onclick="loadAnimeVideoCap(\''.$_GET['section'].'\','.$siguienteCap.','.$_GET['parte'].','.$_GET['idanime'].','.$_GET['idtemporada'].')" class="btn btn-warning">Siguiente</button>';
+				} 
+				?>
+				</center>
+			</div>
+			<?php
+		      }
 		    }else{
 		    	echo $connection->error;
 		    }
 		}
 		?>
-			</div>
 		</div>
 	</div>
 <?php
