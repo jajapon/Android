@@ -170,7 +170,8 @@
 	<div id="content_section" class="container" style="padding:0px;z-index:10000!important">
 		<div id="col-md-12" style="margin:0px">
 			<div class="col-md-12" id="video" style="padding:0px;margin-top:10px">
-				<div class="row col-md-offset-1 col-md-10 col-xs-12">
+				<div id="video_content" class="row col-md-12 col-xs-12" style="margin:0px;padding:0px">
+					<div id="video_content" class="col-md-offset-1 col-md-10">
 
 				<?php 
 					if($tipovideo!=""){
@@ -184,26 +185,23 @@
 		  				}else if($tipovideo=="vk"){
 		  				 ?>
 		  					<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
-
 		  		<?php
 		  				}else if($tipovideo=="rutube"){
 		  				 ?>
 		  					<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
-
 		  		<?php
 		  				}else if($tipovideo=="animeflv"){
 		  				 ?>
 		  				 <video controls="" autoplay="" name="media" style="margin-left:15%!important;width:70%!important;height:auto" ><source src="<?php echo $urlvideo?>" type="video/mp4"></video>
-
 		  		<?php
 		  				}else if($tipovideo=="tutv"){
 		  				 ?>
 		  				 	<iframe  id="frameexterno" src="<?php echo $urlvideo?>" frameborder="0" allowfullscreen></iframe>
-
 		  		<?php
 		  				}
 		  			}
 		      	?>
+		      	</div>
 		    </div>
 			<div id="row container col-md-10">
 				<center>
