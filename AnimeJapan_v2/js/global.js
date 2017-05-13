@@ -4,19 +4,24 @@ $(window).on("popstate", function(e) {
 	window.location = window.location.href;
 });
 
-function changeSection(section){
+function changeSection(section,session = false){
     document.getElementById('datos_section').innerHTML = '<center><img src="imgs/loading.gif" id="loading"/></center><h1 style="font-family:kenyanCoffee;text-align:center" >Cargando...</h1>';
     document.getElementById('section').style = 'background-color: #FFFFFF !important';
     document.getElementById("datos_section").style.display = "block";
 
 	history.pushState(null, "", "animes.php?section="+section);
-	var sections = ["animes", "genero", "alfabetico", "ultimos", "populares"];
-
+	if(session){
+		var sections = ["animes", "genero", "alfabetico", "ultimos", "populares","favoritos"];
+	}else{
+		var sections = ["animes", "genero", "alfabetico", "ultimos", "populares"];
+	}
 	for(var i=0; i < sections.length; i++){
-		if(sections[i] == section){
-			document.getElementById(sections[i]).classList.add("active");
-		}else{
-			document.getElementById(sections[i]).classList.remove("active");
+		if(sections[i] != 'registro'){
+			if(sections[i] == section){
+				document.getElementById(sections[i]).classList.add("active");
+			}else{
+				document.getElementById(sections[i]).classList.remove("active");
+			}
 		}
 	}
 	
@@ -207,4 +212,52 @@ function loadAnimeInfoLook(){
             }, 500);       
        	}           
     });
+}
+
+function doFavourite(action,iduser,idanime){
+	var uri = './php/favourites.php';
+	dataString = 'action='+action+'&iduser='+iduser+'&idanime='+idanime;
+
+	$.ajax({
+       type : "POST",
+       url : uri,
+       data : dataString,
+       datatype: "json",
+       success:function(data){
+       	    switch(action){
+       	    	case 'add':
+       	    		document.getElementById('fav_button').setAttribute('onclick','doFavourite(\'delete\','+iduser+','+idanime+')');
+       	    		document.getElementById('fav_button').innerHTML = '<i class="fa fa-star" style="font-size:30px;margin-top:10px; color:#D7DF01">';    				   	    		
+       	    		break;
+       	    	case 'delete':
+       	    		document.getElementById('fav_button').setAttribute('onclick','doFavourite(\'add\','+iduser+','+idanime+')');
+       	    		document.getElementById('fav_button').innerHTML = '<i class="fa fa-star-o" style="font-size:30px;margin-top:10px; color:#D7DF01">';
+       	    		break;
+       	    	default:
+       	    }     
+       	}           
+    });
+}
+
+function doUsuario(action){
+	var uri = './php/usuarios.php';
+	var username = document.getElementById('new_username').value;
+	var userpass = document.getElementById('new_userpass').value;
+	var nombre = document.getElementById('nombre').value;
+	var apellidos = document.getElementById('apellidos').value;
+	
+	if(username != '' && userpass != '' && nombre != '' && apellidos != ''){
+		dataString = 'action='+action+'&username='+username+'&userpass='+userpass+'&nombre='+nombre+'&apellidos='+apellidos;
+		$.ajax({
+	       type : "POST",
+	       url : uri,
+	       data : dataString,
+	       datatype: "json",
+	       success:function(data){
+	  			document.getElementById('alert').innerHTML = data;
+	       	}           
+	    });
+	}else{
+		document.getElementById('alert').innerHTML = '<div class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong> Debe rellenar todo el formulario.</div>';
+	}
 }

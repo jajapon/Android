@@ -1,4 +1,6 @@
 <?php 
+	session_start();
+
 	if(isset($_GET["section"])){
 		if($_GET["section"]=="genero"){
 ?>
@@ -411,6 +413,72 @@
 		</div>
 	</div>
 
+<?php
+		}else if($_GET["section"]=="favoritos"){
+?>
+
+<div id="title_section" class="row">
+	<h2>MIS FAVORITOS</h2>
+</div>
+
+<div id="content_section" class="container" style="padding:0px!important">
+	<div id="col-md-12" style="margin:0px">
+		<div class="col-md-12" id="others_popular" style="padding:0px">
+
+		<?php 
+			include('php/conexion.php');
+			$query = "SELECT a.* FROM anime a, favoritos f WHERE a.id = f.id_anime AND f.id_usuario = ".$_SESSION['id'].';';
+			$connection->query("SET NAMES 'utf8'");
+
+			if($result = $connection->query($query)){
+	     		while($row = $result->fetch_object()){
+	      		?>
+      			<div class="col-md-3" onclick="loadAnimeInfo(<?php echo $row->id;?>)">
+					<img src="./imgs/animes/<?php echo $row->img_defecto;?>">
+					<div>
+						<h1><?php echo $row->nombre ?></h1>
+					</div>
+				</div>
+	      		<?php
+		      	}
+		    }
+		?>
+		</div>
+	</div>
+</div>
+
+<?php
+		}else if($_GET["section"]=="registro"){
+?>
+
+<div id="title_section" class="row">
+	<h2>REGISTRO EN ANIMEJAPAN</h2>
+</div>
+
+<div id="content_section" class="container" style="padding:0px!important">
+	<div class="col-md-12">
+		<div class="col-md-offset-4 col-md-4" style="margin-top:50px;background-color:#A4A4A4;padding:20px">
+			<div class="form-group">
+				<input type="text" class="form-control" id="new_username" name="nombre" placeholder="Usuario" required>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" id="new_userpass" name="userpass" placeholder="Contraseña" required>
+			</div>		
+			<div class="form-group">
+				<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+			</div>
+			<div class="form-group">
+				<input type="button" onclick="doUsuario('add')" class="form-control btn btn-success" style="float:right;margin-bottom:20px" value="Enviar">
+			</div>
+			<div  id="alert" style="margin-top:10px">
+				
+			</div>
+		</div>
+	</div>
+</div>
 
 <?php
 		}else if($_GET["section"]=="animes"){
@@ -475,6 +543,23 @@
 <div class="row" id="content_anime_info" >
 	<div class="col-xs-12 col-sm-4 col-md-4">
 		<img src="imgs/animes/<?php echo $row->img_defecto;?>" id="imagen_anime">
+		<?php if(isset($_SESSION['user'])){ ?>
+		<center>
+		<?php 
+			$query = "SELECT * FROM favoritos WHERE id_anime = ".$_GET["anime"]." AND id_usuario = ".$_SESSION['id'];
+			if($resultFav = $connection->query($query)){
+				if($resultFav->num_rows == 0){ ?>
+					<a id="fav_button" onclick="doFavourite('add',<?php echo $_SESSION['id']; ?>,<?php echo $_GET['anime']; ?>)"><i class="fa fa-star-o" style="font-size:30px;margin-top:10px; color:#D7DF01"></i></a>
+				<?php }else{ ?>
+					<a id="fav_button" onclick="doFavourite('delete',<?php echo $_SESSION['id']; ?>,<?php echo $_GET['anime']; ?>)"><i class="fa fa-star" style="font-size:30px;margin-top:10px; color:#D7DF01"></i></a>
+				<?php 
+				}
+ 			}else{
+ 				echo $query;
+ 			}
+		?>
+		</center>
+		<?php } ?>
 	</div>
 	<div class="col-xs-12 col-sm-8 col-md-8" id="data_anime_info">
 	  	<div class="form-group">
