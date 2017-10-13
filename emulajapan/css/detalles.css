@@ -1,0 +1,39 @@
+#box_data > div:first-child > img {
+	width:100%;
+	height:auto;
+}
+
+#box_data > div:last-child > div{
+	color: #FFFFFF;
+}
+
+#box_data > div:last-child > div > label{
+	font-size:20px;
+}
+
+#box_data > div:last-child > div > p{
+	font-size: 18px;
+}
+
+#drive_icon{
+	max-width:30px;
+	max-height:30px;
+	display:inline;
+}
+
+#box_data a{
+	color:#00FFFF;
+	text-decoration:none;
+}
+#box_data a:hover{
+	color:#04B4AE;
+}
+
+
+#box_data iframe{
+    width:80%;
+    display:table;
+    margin:0 auto;
+    max-width:600px;
+    height: 420px;
+}

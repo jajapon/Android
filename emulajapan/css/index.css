@@ -1,0 +1,44 @@
+/* CONTENT */
+	.box_emulator{
+		border:solid rgba(255,255,255,0.0) 2px;
+		display:table;
+		padding:0px;
+	}
+
+	.box_color_1{
+		background-color:darkcyan;
+	}
+
+	.box_color_2{
+		background-color:#AEB404;
+	}
+
+	.box_color_3{
+		background-color:#04B45F;
+	}
+
+	.box_color_4{
+		background-color:#DF0101;
+	}
+
+	.box_color_5{
+		background-color:#8904B1;
+	}
+
+	.box_emulator div:first-child{
+	}
+
+	.box_emulator div:first-child img{
+		height:auto;
+		width:100%;
+		margin: 0 auto;
+	}
+
+	.box_emulator div:last-child h1{
+		font-size:20px;
+		text-align:center;
+		margin-top:5px;
+		color:#FFFFFF;
+		font-family: typo;
+		text-shadow: 1px 1px 1px black;
+	}
